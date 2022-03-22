@@ -6,7 +6,7 @@ onready var tween : Tween = $Tween
 onready var dodge_timer : Timer = $Dodge_Cooldown
 onready var trail : Particles2D = $Trail
 onready var gun : Node2D = $Gun
-onready var head : Node2D = $Body/head
+onready var attacks : Humanoid_Attacks = $Attacks_Humanoid
 
 var _velocity : Vector2 = Vector2.ZERO
 
@@ -27,6 +27,8 @@ func _ready():
 
 func _physics_process(_delta):
 	look()
+	fighting()
+	
 	var left = Input.get_action_strength("ui_left")
 	var right = Input.get_action_strength("ui_right")
 	var up = Input.get_action_strength("ui_up")
@@ -35,13 +37,12 @@ func _physics_process(_delta):
 	var dodge = Input.is_action_just_pressed("ui_accept")
 	
 	if dodge and can_dodge:
-		if left or right or up or down:
+		if not direction == Vector2(0,0):
 			trail.emitting = true
 			can_dodge = false
 			dodging = true
 			origin = global_position
-			_velocity = move_and_slide(direction * speed * 180
-			)
+			_velocity = move_and_slide(direction * speed * 120)
 			new_pos = global_position
 			global_position = origin
 			tween.interpolate_property(self, "global_position", origin,new_pos,0.15, tween.TRANS_LINEAR,tween.EASE_OUT_IN)
@@ -66,6 +67,14 @@ func look():
 			gun.rotation_degrees = 0
 		else:
 			gun.look_at(point)
+
+
+func fighting():
+	if Input.is_action_pressed("melee_attack"):
+		attacks.melee()
+	
+	pass
+
 
 func rslook():
 	rs_look.y = Input.get_joy_axis(0, JOY_AXIS_3)

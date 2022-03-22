@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://scripts/mobs/enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Humanoid_Attacks",
+"language": "GDScript",
+"path": "res://scripts/classes/attacks_humanoid.gd"
+}, {
+"base": "Node2D",
+"class": "Roleplay",
+"language": "GDScript",
+"path": "res://scripts/classes/roleplay.gd"
 } ]
 _global_script_class_icons={
-"Enemy": ""
+"Enemy": "",
+"Humanoid_Attacks": "",
+"Roleplay": ""
 }
 
 [application]
@@ -200,6 +212,11 @@ skip={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_render/layer_9="hit detect"
+2d_physics/layer_9="hit detect"
 
 [physics]
 

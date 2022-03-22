@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/interface/splash_screen/splash_screen.gd" type="Script" id=1]
+[ext_resource path="res://assets/graphics/interface/godot_logos/colored/made_with_godot_banner.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Backdrop/Godot_Logo:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Splash_Animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Backdrop/Godot_Logo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Fade_Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="splash_screen" type="CanvasLayer"]
+script = ExtResource( 1 )
+target_scene = "res://scenes/world/world.tscn"
+
+[node name="Backdrop" type="ColorRect" parent="."]
+margin_right = 1600.0
+margin_bottom = 900.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Godot_Logo" type="Sprite" parent="Backdrop"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 800, 450 )
+scale = Vector2( 0.33, 0.33 )
+texture = ExtResource( 2 )
+
+[node name="Splash_Player" type="AnimationPlayer" parent="."]
+autoplay = "Splash_Animation"
+anims/RESET = SubResource( 1 )
+anims/Splash_Animation = SubResource( 2 )
+
+[node name="Scene_Transition_Rect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1600.0
+margin_bottom = 900.0
+
+[node name="Transition_Player" type="AnimationPlayer" parent="Scene_Transition_Rect"]
+anims/Fade_Out = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Transition_Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="animation_finished" from="Splash_Player" to="." method="_on_Splash_Player_animation_finished"]
+[connection signal="animation_finished" from="Scene_Transition_Rect/Transition_Player" to="." method="_on_Transition_Player_animation_finished"]
+[connection signal="timeout" from="Transition_Timer" to="." method="_on_Transition_Timer_timeout"]

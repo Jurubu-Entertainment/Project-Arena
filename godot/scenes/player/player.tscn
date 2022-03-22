@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
 [ext_resource path="res://player.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://assets/player/hand_fist.png" type="Texture" id=5]
 [ext_resource path="res://assets/player/torso.png" type="Texture" id=6]
 [ext_resource path="res://assets/player/head.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/knife.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/hand_hold_knife.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/smoke_particle.png" type="Texture" id=10]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 10, 10, 10, 0.5, 10, 10, 10, 0 )
@@ -21,10 +24,8 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.505303, 0, 0, Vector2( 1, 0.477273 ), -0.3763
 curve = SubResource( 3 )
 
 [sub_resource type="ParticlesMaterial" id=5]
-flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+initial_velocity = 10.0
 scale_random = 1.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
@@ -56,6 +57,7 @@ collision_mask = 18
 wait_time = 0.25
 
 [node name="Gun" type="Node2D" parent="."]
+visible = false
 position = Vector2( 93, 33 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Gun"]
@@ -76,16 +78,13 @@ editor_draw_limits = true
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="Trail" type="Particles2D" parent="."]
-visible = false
-position = Vector2( 2, 0 )
+position = Vector2( 187, 4 )
 rotation = 1.5708
-emitting = false
 amount = 10
-lifetime = 0.5
 speed_scale = 2.0
 local_coords = false
 process_material = SubResource( 5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -139,9 +138,19 @@ texture = ExtResource( 4 )
 position = Vector2( 45, 7 )
 rotation = 0.882385
 
+[node name="One_Handed_Weapons" type="Node2D" parent="Body/Right_Arm/Forearm/Hand"]
+
+[node name="Knife" type="Node2D" parent="Body/Right_Arm/Forearm/Hand/One_Handed_Weapons"]
+position = Vector2( 18.0739, 3.21468 )
+
+[node name="Knife" type="Sprite" parent="Body/Right_Arm/Forearm/Hand/One_Handed_Weapons/Knife"]
+position = Vector2( 0, -20 )
+rotation = -1.57079
+texture = ExtResource( 8 )
+
 [node name="Hand" type="Sprite" parent="Body/Right_Arm/Forearm/Hand"]
 position = Vector2( 17, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 
 [node name="head" type="Node2D" parent="Body"]
 

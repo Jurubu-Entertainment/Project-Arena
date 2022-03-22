@@ -46,7 +46,6 @@ func _physics_process(_delta):
 			global_position = origin
 			tween.interpolate_property(self, "global_position", origin,new_pos,0.15, tween.TRANS_LINEAR,tween.EASE_OUT_IN)
 			tween.start()
-			trail.process_material.angle = -rotation_degrees - 90
 			dodge_timer.start()
 	
 	

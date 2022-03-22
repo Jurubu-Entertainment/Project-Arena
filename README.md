@@ -1,5 +1,5 @@
 # Project-Arena
-Project Arena is a game about fighting in an arena (a better name is still pending). You will be put into fights against groups of enemies, and as you win you'll gain Fame and Victory Credits. Fame will unlock new arena fights, including ones that progress the story as well as side-fights that serve as additional challenges. In-between fights you'll be able to spend the Victory Credits you have accumulated on new equipment, new abilities and new upgrades.
+Project Arena is a game about fighting in an arena (a better name is still pending). You will be put into fights against enemies, and as you win you'll gain Fame and Victory Credits. Fame will unlock new arena fights, including ones that progress the story as well as side-fights that serve as additional challenges. In-between fights you'll be able to spend the Victory Credits you have accumulated on new equipment, new abilities and new upgrades.
 
 During arena fights you will encounter a large variety of enemies using a multitude of weapons, abilities, attack patterns and movement patterns. And the fights will take place on arenas of varying sizes and shapes, and featuring a variety of environmental hazards and powerups.
 

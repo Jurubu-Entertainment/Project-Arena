@@ -6,3 +6,5 @@ During arena fights you will encounter a large variety of enemies using a multit
 There will also be different types of fights. Some fights will pit you against waves of enemies, and you'll have to win all of the waves to obtain victory, while other fights will pit you against arena champions who will challenge you with unique weapons and abilities.
 
 There are also different difficulties of fights. Minor fights are small and easy, but do not grant many rewards. And after some minor fights there will be major fights, which are much harder, but provide much greater rewards. There will also be challenge fights, which will feature uniquely challenging arenas and enemy arrangements. Some challenge fights could even see the return of past arena champions armed with a new arsenal of devastating weaponry and abilities.
+
+While most fights will allow you to set up your own loadout and use the weapons and abilities, as well as their upgrades, that you have unlocked with Victory Credits, some fights will lock you into a specific premade loadout to provide extra challenge.

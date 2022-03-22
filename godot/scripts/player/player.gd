@@ -40,7 +40,7 @@ func _physics_process(_delta):
 			can_dodge = false
 			dodging = true
 			origin = global_position
-			_velocity = move_and_slide(direction * speed * 120
+			_velocity = move_and_slide(direction * speed * 180
 			)
 			new_pos = global_position
 			global_position = origin

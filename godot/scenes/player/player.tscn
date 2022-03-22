@@ -12,22 +12,30 @@
 [ext_resource path="res://assets/player/smoke_particle.png" type="Texture" id=10]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 10, 10, 10, 0.5, 10, 10, 10, 0 )
+colors = PoolColorArray( 10, 10, 10, 1, 10, 10, 10, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
+width = 4096
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, -0.505303, 0, 0, Vector2( 1, 0.477273 ), -0.376364, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 1.84514, 0, 0, Vector2( 0.744565, 0.727273 ), -1.55016, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
 
 [sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.5
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 10.0
-scale_random = 1.0
-scale_curve = SubResource( 4 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 9 )
 color_ramp = SubResource( 2 )
 
 [sub_resource type="CapsuleShape2D" id=6]
@@ -78,9 +86,8 @@ editor_draw_limits = true
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="Trail" type="Particles2D" parent="."]
-position = Vector2( 187, 4 )
-rotation = 1.5708
-amount = 10
+emitting = false
+amount = 40
 speed_scale = 2.0
 local_coords = false
 process_material = SubResource( 5 )
@@ -159,15 +166,18 @@ position = Vector2( 10, 0 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape_1" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -2, 0 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape_2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -2, -48 )
 rotation = 0.634318
 shape = SubResource( 7 )
 
 [node name="CollisionShape_3" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -2, 48 )
 rotation = -0.633555
 shape = SubResource( 7 )

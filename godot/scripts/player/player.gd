@@ -6,6 +6,7 @@ onready var tween : Tween = $Tween
 onready var dodge_timer : Timer = $Dodge_Cooldown
 onready var trail : Particles2D = $Trail
 onready var gun : Node2D = $Gun
+onready var head : Node2D = $Body/head
 
 var _velocity : Vector2 = Vector2.ZERO
 
@@ -21,25 +22,11 @@ var deadzone = 0.3
 
 
 func _ready():
+	OS.window_fullscreen = true
 	Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 
-func _process(_delta):
-	if not dodging:
-		if not use_gamepad:
-			look_at(get_global_mouse_position())
-			gun.look_at(get_global_mouse_position())
-		if use_gamepad:
-			rslook()
-			var gamepad_gun_rotate_point : RayCast2D = $RayCast2D
-			var point = gamepad_gun_rotate_point.get_collision_point()
-			if not gamepad_gun_rotate_point.is_colliding():
-				gun.rotation_degrees = 0
-			else:
-				gun.look_at(point)
-		
-
-
 func _physics_process(_delta):
+	look()
 	var left = Input.get_action_strength("ui_left")
 	var right = Input.get_action_strength("ui_right")
 	var up = Input.get_action_strength("ui_up")
@@ -57,7 +44,6 @@ func _physics_process(_delta):
 			)
 			new_pos = global_position
 			global_position = origin
-			look_at(new_pos)
 			tween.interpolate_property(self, "global_position", origin,new_pos,0.15, tween.TRANS_LINEAR,tween.EASE_OUT_IN)
 			tween.start()
 			trail.process_material.angle = -rotation_degrees - 90
@@ -67,6 +53,20 @@ func _physics_process(_delta):
 	if not dodging:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		_velocity = move_and_slide(direction * speed)
+
+
+func look():
+	if not use_gamepad:
+		look_at(get_global_mouse_position())
+		gun.look_at(get_global_mouse_position())
+	if use_gamepad:
+		rslook()
+		var gamepad_gun_rotate_point : RayCast2D = $RayCast2D
+		var point = gamepad_gun_rotate_point.get_collision_point()
+		if not gamepad_gun_rotate_point.is_colliding():
+			gun.rotation_degrees = 0
+		else:
+			gun.look_at(point)
 
 func rslook():
 	rs_look.y = Input.get_joy_axis(0, JOY_AXIS_3)

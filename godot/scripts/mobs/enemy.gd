@@ -27,8 +27,8 @@ func _physics_process(delta):
 	
 	if behavior == 0:
 		if not player_close:
-			#position += transform.x * speed * delta
-			position += (player.position - position)/50
+			position += transform.x * speed * delta
+			#position += (player.position - position)/50
 			
 			move_and_slide(motion)
 		

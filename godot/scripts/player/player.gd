@@ -6,6 +6,7 @@ onready var tween : Tween = $Tween
 onready var dodge_timer : Timer = $Dodge_Cooldown
 onready var trail : Particles2D = $Trail
 onready var gun : Node2D = $Gun
+onready var head : Bone2D = $Skeleton/Head
 onready var attacks : Humanoid_Attacks = $Attacks_Humanoid
 
 var _velocity : Vector2 = Vector2.ZERO
@@ -59,8 +60,10 @@ func _physics_process(_delta):
 
 func look():
 	if not use_gamepad:
-		look_at(get_global_mouse_position())
-		gun.look_at(get_global_mouse_position())
+		var mouse_pos = get_global_mouse_position()
+		look_at(mouse_pos)
+		gun.look_at(mouse_pos)
+		head.look_at(mouse_pos)
 	if use_gamepad:
 		rslook()
 		var gamepad_gun_rotate_point : RayCast2D = $RayCast2D
@@ -74,8 +77,8 @@ func look():
 func fighting():
 	if Input.is_action_pressed("melee_attack"):
 		attacks.melee()
-	if Input.is_action_just_pressed("shoot_primary"):
-		attacks.fire_current_weapon()
+	if Input.is_action_pressed("shoot_primary"):
+		attacks.fire_primary()
 	pass
 
 

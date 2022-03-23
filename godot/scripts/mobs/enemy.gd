@@ -1,13 +1,16 @@
 extends KinematicBody2D
 class_name Enemy
 
+
 export(int, "Follow", "Don't Follow") var behavior
 export var speed : float
 export var attack_1 : String
 export var attack_2 : String
 
+
 onready var player : KinematicBody2D = get_node("../../Player/Player")
 onready var anim_player = $AnimationPlayer
+
 
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -19,8 +22,10 @@ var current_attack : int
 
 var motion = Vector2()
 
+
 func _ready():
 	origin = global_position
+
 
 func _physics_process(delta):
 	look_at(player.global_position)
@@ -53,6 +58,7 @@ func _physics_process(delta):
 
 func _on_Player_Proximity_body_entered(body):
 	player_close = true
+
 
 func _on_Player_Proximity_body_exited(body):
 	player_close = false

@@ -40,6 +40,9 @@ func melee_damage():
 			if node.has_method("damage"):
 				node.damage(melee_dmg)
 
+func fire_primary():
+	attacking = true
+	anim.play("fire_primary_two_handed")
 
 func fire_current_weapon():
 	if current_weapon == "rifle":
@@ -53,5 +56,5 @@ func _on_Melee_area_entered(body):
 
 
 func _on_anim_animation_finished(anim_name: String):
-	if anim_name.begins_with("melee"):
+	if anim_name.begins_with("melee") or anim_name.begins_with("fire"):
 		attacking = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
-[ext_resource path="res://player.png" type="Texture" id=2]
 [ext_resource path="res://scenes/prefabs/humanoid_skeleton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/projectiles/bullet.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/classes/weapon.gd" type="Script" id=5]
@@ -12,9 +11,10 @@
 [ext_resource path="res://assets/player/smoke_particle.png" type="Texture" id=10]
 [ext_resource path="res://scenes/classes/attacks_humanoid.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/classes/roleplay.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/player/muzzle_flash_01.png" type="Texture" id=13]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.554688, 0.554688, 0.554688, 1, 0.382813, 0.382813, 0.382813, 0.615686 )
+colors = PoolColorArray( 0, 0.91, 0.879667, 1, 0, 0.56, 0.541333, 0.615686 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -44,9 +44,216 @@ color_ramp = SubResource( 2 )
 radius = 39.0
 height = 32.0
 
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 21.2303
-height = 15.1663
+[sub_resource type="Animation" id=13]
+resource_name = "fire_primary_two_handed"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rightarm:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -45.0, -37.0182, -45.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Rightarm/Forearm:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -33.0, -50.9714, -33.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rightarm/Forearm/Hand:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, 40.5279, 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Leftarm:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -21.0, -19.2804, -21.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Leftarm/Forearm:rotation_degrees")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 18.0, 22.5291, 18.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Leftarm/Forearm/Hand:rotation_degrees")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 7.23934, 0.771625, 7.23934 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Gun:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Gun:rotation_degrees")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:rotation_degrees")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Leftarm/Forearm/Hand/Hand:texture")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Rightarm/Forearm/Hand/One_Handed_Weapons:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Rightarm/Forearm/Hand/Hand:texture")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 9 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath(".:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Leftarm/Forearm/Hand/Hand:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14.2721, 1.14475 ), Vector2( 14.2721, 1.14475 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Leftarm/Forearm/Hand/Hand:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -49.3047, -49.3047 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../Weapon:position")
+tracks/15/interp = 2
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 103, 4 ), Vector2( 88, 4 ), Vector2( 103, 4 ) ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath("../Attacks_Humanoid")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_current_weapon"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "rifle_default"
@@ -97,7 +304,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -17.8881 ]
+"values": [ -21.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Leftarm/Forearm:rotation_degrees")
@@ -121,10 +328,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 4.22816 ]
+"values": [ 7.23934 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Head:rotation_degrees")
+tracks/6/path = NodePath("../Gun:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -133,10 +340,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -44.9999 ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("../Gun:position")
+tracks/7/path = NodePath("../Gun:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -145,10 +352,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("../Gun:rotation_degrees")
+tracks/8/path = NodePath(".:rotation_degrees")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -157,23 +364,23 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 45.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath(".:rotation_degrees")
-tracks/9/interp = 2
+tracks/9/path = NodePath("Leftarm/Forearm/Hand/Hand:texture")
+tracks/9/interp = 0
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 45.0 ]
+"update": 1,
+"values": [ ExtResource( 8 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Leftarm/Forearm/Hand/Hand:texture")
-tracks/10/interp = 0
+tracks/10/path = NodePath("Rightarm/Forearm/Hand/One_Handed_Weapons:visible")
+tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
@@ -181,11 +388,11 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ false ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Rightarm/Forearm/Hand/One_Handed_Weapons:visible")
-tracks/11/interp = 1
+tracks/11/path = NodePath("Rightarm/Forearm/Hand/Hand:texture")
+tracks/11/interp = 0
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
@@ -193,22 +400,22 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ ExtResource( 9 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Rightarm/Forearm/Hand/Hand:texture")
-tracks/12/interp = 0
+tracks/12/path = NodePath(".:modulate")
+tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 9 ) ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath(".:modulate")
+tracks/13/path = NodePath("Leftarm/Forearm/Hand/Hand:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -217,10 +424,10 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 14.2721, 1.14475 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Leftarm/Forearm/Hand/Hand:position")
+tracks/14/path = NodePath("Leftarm/Forearm/Hand/Hand:rotation_degrees")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -229,11 +436,11 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 14.2721, 1.14475 ) ]
+"values": [ -49.3047 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Leftarm/Forearm/Hand/Hand:rotation_degrees")
-tracks/15/interp = 1
+tracks/15/path = NodePath("../Weapon:position")
+tracks/15/interp = 2
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
@@ -241,7 +448,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -49.3047 ]
+"values": [ Vector2( 103, 4 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -259,10 +466,16 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 21.2303
+height = 15.1663
+
 [sub_resource type="Animation" id=11]
 resource_name = "New Anim"
 length = 0.1
 loop = true
+
+[sub_resource type="CanvasItemMaterial" id=14]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -310,27 +523,12 @@ local_coords = false
 process_material = SubResource( 5 )
 texture = ExtResource( 10 )
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 7, 0 )
-rotation = 1.5708
-texture = ExtResource( 2 )
-
 [node name="CollisionShape_1" type="CollisionShape2D" parent="."]
-position = Vector2( -2, 0 )
+position = Vector2( -2, -35 )
 shape = SubResource( 6 )
 
-[node name="CollisionShape_2" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -48 )
-rotation = 0.634318
-shape = SubResource( 7 )
-
-[node name="CollisionShape_3" type="CollisionShape2D" parent="."]
-position = Vector2( -2, 48 )
-rotation = -0.633555
-shape = SubResource( 7 )
-
 [node name="Area_Holder" type="Node2D" parent="."]
+position = Vector2( 0, -35 )
 
 [node name="melee" type="Node2D" parent="Area_Holder"]
 
@@ -343,10 +541,13 @@ polygon = PoolVector2Array( 106, -114, 46, -118, 2, -77, 2, 78, 87, 139, 132, 14
 disabled = true
 
 [node name="Skeleton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -35 )
+rotation = 0.785398
 
 [node name="Animations" parent="Skeleton" index="0"]
 autoplay = "rifle_default"
 playback_default_blend_time = 0.0
+anims/fire_primary_two_handed = SubResource( 13 )
 anims/rifle_default = SubResource( 12 )
 
 [node name="Death" parent="Skeleton" index="1"]
@@ -354,10 +555,16 @@ autoplay = "start"
 anims/start = SubResource( 10 )
 
 [node name="Leftarm" parent="Skeleton" index="3"]
-scale = Vector2( 1, 1 )
+rotation = -0.366519
 
 [node name="Arm" parent="Skeleton/Leftarm" index="0"]
 position = Vector2( 23, -2 )
+
+[node name="Forearm" parent="Skeleton/Leftarm" index="1"]
+rotation = 0.314159
+
+[node name="Hand" parent="Skeleton/Leftarm/Forearm" index="0"]
+rotation = 0.12635
 
 [node name="Hand" parent="Skeleton/Leftarm/Forearm/Hand" index="0"]
 position = Vector2( 14.2721, 1.14475 )
@@ -365,16 +572,28 @@ rotation = -0.860529
 texture = ExtResource( 8 )
 
 [node name="Rightarm" parent="Skeleton" index="4"]
-scale = Vector2( 1, 1 )
+rotation = -0.785398
+
+[node name="Forearm" parent="Skeleton/Rightarm" index="1"]
+rotation = -0.575959
 
 [node name="Hand" parent="Skeleton/Rightarm/Forearm" index="0"]
-scale = Vector2( 1, 1 )
+rotation = 0.523599
 
 [node name="One_Handed_Weapons" parent="Skeleton/Rightarm/Forearm/Hand" index="0"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.5 )
+
+[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons" index="0"]
+rotation = 3.14159
+
+[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons/Knife" index="0"]
+flip_v = true
 
 [node name="Hand" parent="Skeleton/Rightarm/Forearm/Hand" index="1"]
 texture = ExtResource( 9 )
+
+[node name="Head" parent="Skeleton" index="5"]
+rotation = 0.136135
 
 [node name="Attacks_Humanoid" parent="." instance=ExtResource( 11 )]
 melee_dmg = 53
@@ -397,7 +616,7 @@ rotation = -0.633555
 shape = SubResource( 7 )
 
 [node name="Weapon" type="Node2D" parent="."]
-position = Vector2( 127, 0 )
+position = Vector2( 103, 4 )
 script = ExtResource( 5 )
 projectile = ExtResource( 4 )
 
@@ -409,6 +628,12 @@ texture = ExtResource( 7 )
 
 [node name="Muzzle" type="Node2D" parent="Weapon"]
 position = Vector2( 109, 0 )
+
+[node name="Sprite2" type="Sprite" parent="Weapon"]
+visible = false
+material = SubResource( 14 )
+position = Vector2( 210, 0 )
+texture = ExtResource( 13 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 6 )

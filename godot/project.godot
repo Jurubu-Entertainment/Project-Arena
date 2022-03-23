@@ -108,7 +108,7 @@ window/vsync/vsync_via_compositor=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/SliderLabel/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/branch/plugin.cfg", "res://addons/dardanbujupaj.node_warnings/plugin.cfg", "res://addons/orphan_import_file_cleaner/plugin.cfg", "res://addons/project_map/plugin.cfg", "res://addons/text_editor/plugin.cfg", "res://addons/zoomy/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/SliderLabel/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/branch/plugin.cfg", "res://addons/dardanbujupaj.node_warnings/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/orphan_import_file_cleaner/plugin.cfg", "res://addons/project_map/plugin.cfg", "res://addons/text_editor/plugin.cfg", "res://addons/zoomy/plugin.cfg" )
 
 [importer_defaults]
 

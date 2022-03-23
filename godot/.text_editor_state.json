@@ -1,0 +1,368 @@
+{
+	"save_version": "1",
+	"font_size": 12,
+	"font_size_ui": 12,
+	"tabs": {
+
+	},
+	"selected": "",
+	"word_wrap": false,
+	"ignore_head_numbers": true,
+	"show_tab_color": true,
+	"show": {
+		"dir": {
+			"empty": true,
+			"hidden": true,
+			"gdignore": true,
+			"addons": false,
+			"git": false,
+			"import": false,
+			"trash": false
+		},
+		"file": {
+			"hidden": false,
+			"extensionless": false
+		}
+	},
+	"tags": {
+
+	},
+	"tags_enabled": [
+
+	],
+	"exts_enabled": {
+		"txt": true,
+		"md": true,
+		"json": true,
+		"csv": true,
+		"cfg": true,
+		"ini": true,
+		"yaml": true,
+		"rpy": true,
+		"gd": false,
+		"tres": false,
+		"tscn": false,
+		"import": false,
+		"gdignore": false,
+		"gitignore": false
+	},
+	"shortcuts": {
+
+	},
+	"file_list": {
+		"": {
+			"file_path": "res://",
+			"all": {
+				"assets": {
+					"file_path": "res://assets",
+					"all": {
+						"graphics": {
+							"file_path": "res://assets/graphics",
+							"all": {
+								"interface": {
+									"file_path": "res://assets/graphics/interface",
+									"all": {
+										"godot_logos": {
+											"file_path": "res://assets/graphics/interface/godot_logos",
+											"all": {
+												"colored": {
+													"file_path": "res://assets/graphics/interface/godot_logos/colored",
+													"all": {
+
+													},
+													"files": [
+
+													],
+													"dirs": [
+
+													],
+													"show": true,
+													"open": true,
+													"tint": "1,1,1,1"
+												},
+												"grayscale": {
+													"file_path": "res://assets/graphics/interface/godot_logos/grayscale",
+													"all": {
+
+													},
+													"files": [
+
+													],
+													"dirs": [
+
+													],
+													"show": true,
+													"open": true,
+													"tint": "1,1,1,1"
+												}
+											},
+											"files": [
+
+											],
+											"dirs": [
+												"colored",
+												"grayscale"
+											],
+											"show": true,
+											"open": true,
+											"tint": "1,1,1,1"
+										}
+									},
+									"files": [
+
+									],
+									"dirs": [
+										"godot_logos"
+									],
+									"show": true,
+									"open": true,
+									"tint": "1,1,1,1"
+								}
+							},
+							"files": [
+
+							],
+							"dirs": [
+								"interface"
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"player": {
+							"file_path": "res://assets/player",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						}
+					},
+					"files": [
+
+					],
+					"dirs": [
+						"graphics",
+						"player"
+					],
+					"show": true,
+					"open": true,
+					"tint": "1,1,1,1"
+				},
+				"scenes": {
+					"file_path": "res://scenes",
+					"all": {
+						"interface": {
+							"file_path": "res://scenes/interface",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"mobs": {
+							"file_path": "res://scenes/mobs",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"player": {
+							"file_path": "res://scenes/player",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"splash_screen": {
+							"file_path": "res://scenes/splash_screen",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"title_screen": {
+							"file_path": "res://scenes/title_screen",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"world": {
+							"file_path": "res://scenes/world",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						}
+					},
+					"files": [
+
+					],
+					"dirs": [
+						"interface",
+						"mobs",
+						"player",
+						"splash_screen",
+						"title_screen",
+						"world"
+					],
+					"show": true,
+					"open": true,
+					"tint": "1,1,1,1"
+				},
+				"scripts": {
+					"file_path": "res://scripts",
+					"all": {
+						"interface": {
+							"file_path": "res://scripts/interface",
+							"all": {
+								"splash_screen": {
+									"file_path": "res://scripts/interface/splash_screen",
+									"all": {
+
+									},
+									"files": [
+
+									],
+									"dirs": [
+
+									],
+									"show": true,
+									"open": true,
+									"tint": "1,1,1,1"
+								}
+							},
+							"files": [
+
+							],
+							"dirs": [
+								"splash_screen"
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"mobs": {
+							"file_path": "res://scripts/mobs",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"player": {
+							"file_path": "res://scripts/player",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						}
+					},
+					"files": [
+
+					],
+					"dirs": [
+						"interface",
+						"mobs",
+						"player"
+					],
+					"show": true,
+					"open": true,
+					"tint": "1,1,1,1"
+				}
+			},
+			"files": [
+
+			],
+			"dirs": [
+				"assets",
+				"scenes",
+				"scripts"
+			],
+			"show": true,
+			"open": true,
+			"tint": "1,1,1,1"
+		}
+	},
+	"file_data": {
+
+	},
+	"div1": -300,
+	"div2": -80,
+	"div3": 100,
+	"div4": 180,
+	"window_size": [
+		1600,
+		877
+	]
+}

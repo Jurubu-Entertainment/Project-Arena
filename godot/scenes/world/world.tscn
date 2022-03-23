@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://2t28v32hktj3"]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/mobs/base.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50, 10 )
 
 [node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 50, -10, -50, -10, -50, 10, 50, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource( 1 )]
+position = Vector2( 6, -32 )
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" parent="Mobs" instance=ExtResource( 2 )]
+position = Vector2( 84, -26 )
+
+[node name="Projectiles" type="Node2D" parent="."]

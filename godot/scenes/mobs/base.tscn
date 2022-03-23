@@ -1,0 +1,158 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/mobs/enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/classes/roleplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/prefabs/humanoid_skeleton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 153, 89 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "big pop"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack_Radius_2/Attack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "small pop"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack_Radius_1/Attack/Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5, 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Enemy_Base" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource( 1 )
+speed = 50.0
+attack_1 = "small pop"
+attack_2 = "big pop"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -5, -5, 5, -5, 5, 5, -5, 5 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Player_Proximity" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Proximity"]
+polygon = PoolVector2Array( 8, -6, 6, -8, -6, -8, -8, -6, -8, 6, -6, 8, 6, 8, 8, 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/big pop" = SubResource( 3 )
+"anims/small pop" = SubResource( 2 )
+
+[node name="Attack_Radius_1" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Attack_Radius_1"]
+polygon = PoolVector2Array( 10, 7, 7, 10, -7, 10, -10, 7, -10, -7, -7, -10, 7, -10, 10, -7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Attack" type="Node2D" parent="Attack_Radius_1"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Attack_Radius_1/Attack"]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 8, -6, 8, 6, 6, 8, -6, 8, -8, 6, -8, -6, -6, -8, 6, -8, 7, -10, -7, -10, -10, -7, -10, 7, -7, 10, 7, 10, 10, 7, 10, -7, 7, -10, 6, -8 )
+
+[node name="Attack_Radius_2" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Attack_Radius_2"]
+polygon = PoolVector2Array( 13, 8, 8, 13, -8, 13, -13, 8, -13, -8, -8, -13, 8, -13, 13, -8 )
+
+[node name="Attack" type="Node2D" parent="Attack_Radius_2"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Attack_Radius_2/Attack"]
+polygon = PoolVector2Array( 7, -10, -7, -10, -10, -7, -10, 7, -7, 10, 7, 10, 10, 7, 10, -7, 13, -8, 13, 8, 8, 13, -8, 13, -13, 8, -13, -8, -8, -13, 8, -13, 13, -8, 10, -7 )
+
+[node name="Attack_Rate" type="Timer" parent="."]
+
+[node name="Roleplay" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roleplay"]
+shape = SubResource( 4 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Death" parent="Skeleton" index="1"]
+autoplay = "start"
+anims/start = SubResource( 5 )
+
+[node name="Torso" parent="Skeleton" index="2"]
+visible = false
+
+[node name="Leftarm" parent="Skeleton" index="3"]
+visible = false
+
+[node name="Hand" parent="Skeleton/Leftarm/Forearm" index="0"]
+position = Vector2( 44.2196, 82.2474 )
+rotation = 0.261799
+scale = Vector2( 1, 1 )
+
+[node name="Rightarm" parent="Skeleton" index="4"]
+visible = false
+
+[node name="Head" parent="Skeleton" index="5"]
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Skeleton"]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( -5, -5, 5, -5, 5, 5, -5, 5 )
+
+[connection signal="body_entered" from="Player_Proximity" to="." method="_on_Player_Proximity_body_entered"]
+[connection signal="body_exited" from="Player_Proximity" to="." method="_on_Player_Proximity_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Skeleton"]

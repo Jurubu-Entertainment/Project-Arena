@@ -1,186 +1,149 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://cn53gf11w22be"]
 
-[ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
-[ext_resource path="res://player.png" type="Texture" id=2]
-[ext_resource path="res://scenes/prefabs/humanoid_skeleton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/player/hand_hold_knife.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/smoke_particle.png" type="Texture" id=10]
-[ext_resource path="res://scenes/classes/attacks_humanoid.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/classes/roleplay.tscn" type="PackedScene" id=12]
+[ext_resource type="Texture2D" uid="uid://4n4sfuifoiqa" path="res://assets/player/head.png" id="1_gul0v"]
+[ext_resource type="Texture2D" uid="uid://38wolxwa0n2m" path="res://assets/player/torso.png" id="1_jrhox"]
+[ext_resource type="Texture2D" uid="uid://bj7xuqsb6loww" path="res://assets/player/arm.png" id="3_b5od6"]
+[ext_resource type="Texture2D" uid="uid://dkpxciku7st83" path="res://assets/player/hand_fist.png" id="4_h1jna"]
+[ext_resource type="Texture2D" uid="uid://b1av3qkn2etp3" path="res://assets/player/forearm.png" id="5_5n8vn"]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 10, 10, 10, 1, 10, 10, 10, 0 )
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_uhgy5"]
+bone_index = 1
+bone2d_node = NodePath("Left")
+target_nodepath = NodePath("../elbow")
+enable_constraint = true
+constraint_angle_min = 45.0
+constraint_angle_max = 180.0
+constraint_angle_invert = true
+constraint_in_localspace = true
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-width = 4096
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_nxuyf"]
+bone_index = 2
+bone2d_node = NodePath("Left/Bone2D")
+target_nodepath = NodePath("../wrist")
+enable_constraint = true
+constraint_angle_min = 135.0
+constraint_angle_max = 0.0
+constraint_angle_invert = false
+constraint_in_localspace = true
 
-[sub_resource type="Curve" id=8]
-_data = [ Vector2( 0, 0 ), 0.0, 1.84514, 0, 0, Vector2( 0.744565, 0.727273 ), -1.55016, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-lifetime_randomness = 0.5
-flag_align_y = true
-flag_rotate_y = true
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 100.0
-initial_velocity_random = 0.5
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale_curve = SubResource( 9 )
-color_ramp = SubResource( 2 )
-
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 39.0
-height = 32.0
-
-[sub_resource type="CapsuleShape2D" id=7]
-radius = 21.2303
-height = 15.1663
-
-[sub_resource type="Animation" id=10]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[node name="Player" type="KinematicBody2D"]
-collision_mask = 2
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ]
-}
-speed = 200.0
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 10, 0 )
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_2l2pq"]
 enabled = true
-cast_to = Vector2( 900, 0 )
-collision_mask = 18
+modification_count = 5
+modifications/0 = SubResource( "SkeletonModification2DLookAt_uhgy5" )
+modifications/1 = SubResource( "SkeletonModification2DLookAt_nxuyf" )
 
-[node name="Dodge_Cooldown" type="Timer" parent="."]
-wait_time = 0.25
+[node name="CharacterBody2D" type="CharacterBody2D"]
+__meta__ = {
+"_edit_horizontal_guides_": []
+}
 
-[node name="Gun" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+rotation = 0.671035
+modification_stack = SubResource( "SkeletonModificationStack2D_2l2pq" )
+
+[node name="Torso" type="Sprite2D" parent="Skeleton2D"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource( "1_jrhox" )
+
+[node name="Head" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 32.0
+bone_angle = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Head"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(10, 0)
+texture = ExtResource( "1_gul0v" )
+
+[node name="Left" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(4, -57)
+rotation = -0.339865
+scale = Vector2(1, 1)
+skew = 0.0174532
+rest = Transform2D(1, 0, 0, 1, 4, -57)
+__meta__ = {
+"_local_pose_override_enabled_": true
+}
+
+[node name="Arm" type="Sprite2D" parent="Skeleton2D/Left"]
 visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(25, -10)
+texture = ExtResource( "3_b5od6" )
 
-[node name="Polygon2D" type="Polygon2D" parent="Gun"]
-position = Vector2( 0, -1 )
-color = Color( 0.478431, 0.478431, 0.478431, 1 )
-polygon = PoolVector2Array( -2, -19, 65, -19, 65, 3, -2, 3 )
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Left"]
+position = Vector2(46, -13)
+rest = Transform2D(1, 0, 0, 1, 46, -13)
+__meta__ = {
+"_local_pose_override_enabled_": true
+}
 
-[node name="Node2D" type="Node2D" parent="Gun"]
-position = Vector2( 9, 0 )
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Left/Bone2D"]
+position = Vector2(44, 7)
+rest = Transform2D(1, 0, 0, 1, 44, 7)
+auto_calculate_length_and_angle = false
+length = 32.0
+bone_angle = 4.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 1.75, 1.75 )
-editor_draw_limits = true
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Left/Bone2D/Bone2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(21, 0)
+texture = ExtResource( "4_h1jna" )
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="Node2D2" type="Node2D" parent="."]
-
-[node name="Trail" type="Particles2D" parent="."]
-emitting = false
-amount = 40
-speed_scale = 2.0
-local_coords = false
-process_material = SubResource( 5 )
-texture = ExtResource( 10 )
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Left/Bone2D"]
 visible = false
-position = Vector2( 7, 0 )
-rotation = 1.5708
-texture = ExtResource( 2 )
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(21, 3)
+texture = ExtResource( "5_5n8vn" )
 
-[node name="CollisionShape_1" type="CollisionShape2D" parent="."]
-position = Vector2( -2, 0 )
-shape = SubResource( 6 )
+[node name="Right" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(4, 57)
+scale = Vector2(1, -1)
+rest = Transform2D(1, 0, 0, -1, 4, 57)
 
-[node name="CollisionShape_2" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -48 )
-rotation = 0.634318
-shape = SubResource( 7 )
+[node name="Arm" type="Sprite2D" parent="Skeleton2D/Right"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(25, -10)
+texture = ExtResource( "3_b5od6" )
 
-[node name="CollisionShape_3" type="CollisionShape2D" parent="."]
-position = Vector2( -2, 48 )
-rotation = -0.633555
-shape = SubResource( 7 )
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Right"]
+position = Vector2(46, -13)
+rest = Transform2D(1, 0, 0, 1, 46, -13)
 
-[node name="Area_Holder" type="Node2D" parent="."]
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Right/Bone2D"]
+position = Vector2(44, 7)
+rest = Transform2D(1, 0, 0, 1, 44, 7)
+auto_calculate_length_and_angle = false
+length = 32.0
+bone_angle = 4.0
 
-[node name="melee" type="Node2D" parent="Area_Holder"]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Right/Bone2D/Bone2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(21, 0)
+texture = ExtResource( "4_h1jna" )
 
-[node name="Melee" type="Area2D" parent="Area_Holder"]
-collision_layer = 4096
-collision_mask = 256
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/Right/Bone2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(21, 3)
+texture = ExtResource( "5_5n8vn" )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area_Holder/Melee"]
-polygon = PoolVector2Array( 106, -114, 46, -118, 2, -77, 2, 78, 87, 139, 132, 149, 171, 98, 187, 39, 191, -14, 171, -56, 132, -93 )
-disabled = true
+[node name="elbow" type="Position2D" parent="."]
+position = Vector2(90, -58)
 
-[node name="Skeleton" parent="." instance=ExtResource( 3 )]
-
-[node name="Death" parent="Skeleton" index="1"]
-autoplay = "start"
-anims/start = SubResource( 10 )
-
-[node name="Hand" parent="Skeleton/Rightarm/Forearm" index="0"]
-rotation = -0.0715585
-
-[node name="One_Handed_Weapons" parent="Skeleton/Rightarm/Forearm/Hand" index="0"]
-visible = true
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons" index="0"]
-rotation = 3.14159
-
-[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons/Knife" index="0"]
-flip_v = true
-
-[node name="Hand" parent="Skeleton/Rightarm/Forearm/Hand" index="1"]
-texture = ExtResource( 4 )
-
-[node name="Attacks_Humanoid" parent="." instance=ExtResource( 11 )]
-melee_dmg = 53
-
-[node name="Roleplay" parent="." instance=ExtResource( 12 )]
-visible = false
-
-[node name="CollisionShape_1" type="CollisionShape2D" parent="Roleplay"]
-position = Vector2( -2, 0 )
-shape = SubResource( 6 )
-
-[node name="CollisionShape_2" type="CollisionShape2D" parent="Roleplay"]
-position = Vector2( -2, -48 )
-rotation = 0.634318
-shape = SubResource( 7 )
-
-[node name="CollisionShape_3" type="CollisionShape2D" parent="Roleplay"]
-position = Vector2( -2, 48 )
-rotation = -0.633555
-shape = SubResource( 7 )
-
-[connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_Dodge_Cooldown_timeout"]
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
-[connection signal="area_entered" from="Area_Holder/Melee" to="Attacks_Humanoid" method="_on_Melee_area_entered"]
-[connection signal="body_entered" from="Area_Holder/Melee" to="Attacks_Humanoid" method="_on_Melee_area_entered"]
-
-[editable path="Skeleton"]
+[node name="wrist" type="Position2D" parent="."]
+position = Vector2(147, -15)

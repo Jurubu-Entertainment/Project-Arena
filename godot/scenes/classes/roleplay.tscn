@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://scripts/classes/roleplay.gd" type="Script" id=1]
-
-[node name="Roleplay" type="Area2D"]
-collision_layer = 256
-collision_mask = 4096
-script = ExtResource( 1 )

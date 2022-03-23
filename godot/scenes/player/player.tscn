@@ -1,32 +1,38 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
 [ext_resource path="res://player.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/arm.png" type="Texture" id=3]
-[ext_resource path="res://assets/player/forearm.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/hand_fist.png" type="Texture" id=5]
-[ext_resource path="res://assets/player/torso.png" type="Texture" id=6]
-[ext_resource path="res://assets/player/head.png" type="Texture" id=7]
+[ext_resource path="res://scenes/prefabs/humanoid_skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/player/hand_hold_knife.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/smoke_particle.png" type="Texture" id=10]
+[ext_resource path="res://scenes/classes/attacks_humanoid.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/classes/roleplay.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 10, 10, 10, 0.5, 10, 10, 10, 0 )
+colors = PoolColorArray( 10, 10, 10, 1, 10, 10, 10, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
+width = 4096
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, -0.505303, 0, 0, Vector2( 1, 0.477273 ), -0.376364, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 1.84514, 0, 0, Vector2( 0.744565, 0.727273 ), -1.55016, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
 
 [sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.5
+flag_align_y = true
+flag_rotate_y = true
 flag_disable_z = true
+spread = 180.0
 gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_random = 1.0
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 9 )
 color_ramp = SubResource( 2 )
 
 [sub_resource type="CapsuleShape2D" id=6]
@@ -36,6 +42,21 @@ height = 32.0
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 21.2303
 height = 15.1663
+
+[sub_resource type="Animation" id=10]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -56,7 +77,7 @@ collision_mask = 18
 wait_time = 0.25
 
 [node name="Gun" type="Node2D" parent="."]
-position = Vector2( 93, 33 )
+visible = false
 
 [node name="Polygon2D" type="Polygon2D" parent="Gun"]
 position = Vector2( 0, -1 )
@@ -68,7 +89,7 @@ position = Vector2( 9, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.75, 1.75 )
 editor_draw_limits = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -76,78 +97,18 @@ editor_draw_limits = true
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="Trail" type="Particles2D" parent="."]
-visible = false
-position = Vector2( 2, 0 )
-rotation = 1.5708
 emitting = false
-amount = 10
-lifetime = 0.5
+amount = 40
 speed_scale = 2.0
 local_coords = false
 process_material = SubResource( 5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 7, 0 )
 rotation = 1.5708
 texture = ExtResource( 2 )
-
-[node name="Body" type="Node2D" parent="."]
-
-[node name="Torso" type="Sprite" parent="Body"]
-texture = ExtResource( 6 )
-
-[node name="Left_Arm" type="Node2D" parent="Body"]
-position = Vector2( 4, -57 )
-
-[node name="Arm" type="Sprite" parent="Body/Left_Arm"]
-position = Vector2( 22, -9 )
-texture = ExtResource( 3 )
-
-[node name="Forearm" type="Node2D" parent="Body/Left_Arm"]
-position = Vector2( 43, -12 )
-
-[node name="Forearm" type="Sprite" parent="Body/Left_Arm/Forearm"]
-position = Vector2( 19, 2 )
-texture = ExtResource( 4 )
-
-[node name="Hand" type="Node2D" parent="Body/Left_Arm/Forearm"]
-position = Vector2( 45, 7 )
-rotation = 0.882385
-
-[node name="Hand" type="Sprite" parent="Body/Left_Arm/Forearm/Hand"]
-position = Vector2( 17, 0 )
-texture = ExtResource( 5 )
-
-[node name="Right_Arm" type="Node2D" parent="Body"]
-position = Vector2( 4, 57 )
-scale = Vector2( 1, -1 )
-
-[node name="Arm" type="Sprite" parent="Body/Right_Arm"]
-position = Vector2( 22, -9 )
-texture = ExtResource( 3 )
-
-[node name="Forearm" type="Node2D" parent="Body/Right_Arm"]
-position = Vector2( 43, -12 )
-
-[node name="Forearm" type="Sprite" parent="Body/Right_Arm/Forearm"]
-position = Vector2( 19, 2 )
-texture = ExtResource( 4 )
-
-[node name="Hand" type="Node2D" parent="Body/Right_Arm/Forearm"]
-position = Vector2( 45, 7 )
-rotation = 0.882385
-
-[node name="Hand" type="Sprite" parent="Body/Right_Arm/Forearm/Hand"]
-position = Vector2( 17, 0 )
-texture = ExtResource( 5 )
-
-[node name="head" type="Node2D" parent="Body"]
-
-[node name="Head" type="Sprite" parent="Body/head"]
-position = Vector2( 10, 0 )
-texture = ExtResource( 7 )
 
 [node name="CollisionShape_1" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 0 )
@@ -165,5 +126,61 @@ shape = SubResource( 7 )
 
 [node name="Area_Holder" type="Node2D" parent="."]
 
+[node name="melee" type="Node2D" parent="Area_Holder"]
+
+[node name="Melee" type="Area2D" parent="Area_Holder"]
+collision_layer = 4096
+collision_mask = 256
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area_Holder/Melee"]
+polygon = PoolVector2Array( 106, -114, 46, -118, 2, -77, 2, 78, 87, 139, 132, 149, 171, 98, 187, 39, 191, -14, 171, -56, 132, -93 )
+disabled = true
+
+[node name="Skeleton" parent="." instance=ExtResource( 3 )]
+
+[node name="Death" parent="Skeleton" index="1"]
+autoplay = "start"
+anims/start = SubResource( 10 )
+
+[node name="Hand" parent="Skeleton/Rightarm/Forearm" index="0"]
+rotation = -0.0715585
+
+[node name="One_Handed_Weapons" parent="Skeleton/Rightarm/Forearm/Hand" index="0"]
+visible = true
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons" index="0"]
+rotation = 3.14159
+
+[node name="Knife" parent="Skeleton/Rightarm/Forearm/Hand/One_Handed_Weapons/Knife" index="0"]
+flip_v = true
+
+[node name="Hand" parent="Skeleton/Rightarm/Forearm/Hand" index="1"]
+texture = ExtResource( 4 )
+
+[node name="Attacks_Humanoid" parent="." instance=ExtResource( 11 )]
+melee_dmg = 53
+
+[node name="Roleplay" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="CollisionShape_1" type="CollisionShape2D" parent="Roleplay"]
+position = Vector2( -2, 0 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape_2" type="CollisionShape2D" parent="Roleplay"]
+position = Vector2( -2, -48 )
+rotation = 0.634318
+shape = SubResource( 7 )
+
+[node name="CollisionShape_3" type="CollisionShape2D" parent="Roleplay"]
+position = Vector2( -2, 48 )
+rotation = -0.633555
+shape = SubResource( 7 )
+
 [connection signal="timeout" from="Dodge_Cooldown" to="." method="_on_Dodge_Cooldown_timeout"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="area_entered" from="Area_Holder/Melee" to="Attacks_Humanoid" method="_on_Melee_area_entered"]
+[connection signal="body_entered" from="Area_Holder/Melee" to="Attacks_Humanoid" method="_on_Melee_area_entered"]
+
+[editable path="Skeleton"]

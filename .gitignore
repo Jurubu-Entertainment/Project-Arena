@@ -8,6 +8,9 @@ export_presets.cfg
 *.import
 *.pur
 
+# Project-specific ignores
+
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 

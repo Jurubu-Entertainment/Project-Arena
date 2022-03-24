@@ -28,39 +28,40 @@ func _ready():
 
 
 func _physics_process(delta):
-	look_at(player.global_position)
-	
-	if behavior == 0:
-		if not player_close:
-			position += transform.x * speed * delta
-			#position += (player.position - position)/50
+	if is_instance_valid(player):
+		look_at(player.global_position)
+		
+		if behavior == 0:
+			if not player_close:
+				position += transform.x * speed * delta
+				#position += (player.position - position)/50
+				
+				move_and_slide(motion)
 			
-			move_and_slide(motion)
+			if player_close:
+				attacking = true
+			else:
+				attacking = false
 		
-		if player_close:
-			attacking = true
-		else:
-			attacking = false
-	
-	if attacking:
-		if has_attacked:
-			random.randomize()
-			var num = random.randi_range(1,2)
-			if num == 1:
-				has_attacked = false
-				anim_player.play(attack_1)
-			if num == 2:
-				has_attacked = false
-				anim_player.play(attack_2)
+		if attacking:
+			if has_attacked:
+				random.randomize()
+				var num = random.randi_range(1,2)
+				if num == 1:
+					has_attacked = false
+					anim_player.play(attack_1)
+				if num == 2:
+					has_attacked = false
+					anim_player.play(attack_2)
 		
 	
 
 
-func _on_Player_Proximity_body_entered(body):
+func _on_Player_Proximity_body_entered(_body):
 	player_close = true
 
 
-func _on_Player_Proximity_body_exited(body):
+func _on_Player_Proximity_body_exited(_body):
 	player_close = false
 
 

@@ -2,6 +2,8 @@ extends Node2D
 class_name Humanoid_Attacks
 
 export var melee_dmg: int
+export var target : String
+export(int, LAYERS_2D_PHYSICS) var collide_layer
 
 onready var anim : AnimationPlayer = $"../Skeleton/Animations"
 onready var roleplay : Roleplay = $"../Roleplay"
@@ -19,9 +21,10 @@ func _ready():
 
 
 func _physics_process(delta):
-	if not attacking:
-		if current_weapon == "rifle":
-			anim.play("rifle_default")
+	if roleplay.health > 0:
+		if not attacking:
+			if current_weapon == "rifle":
+				anim.play("rifle_default")
 
 
 func melee():
@@ -46,7 +49,7 @@ func fire_primary():
 
 func fire_current_weapon():
 	if current_weapon == "rifle":
-		weapon.fire()
+		weapon.fire(owner)
 
 
 func _on_Melee_area_entered(body):

@@ -4,9 +4,9 @@ class_name Weapon
 
 export var projectile : PackedScene
 
-func fire():
-	var child = projectile.instance()
-	$Muzzle.look_at(get_global_mouse_position())
+func fire(origin):
+	var child : Projectile = projectile.instance()
 	child.rotation = $Muzzle.global_rotation
 	child.global_position = $Muzzle.global_position
+	child.origin = origin
 	$"../../../Projectiles".add_child(child)

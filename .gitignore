@@ -9,7 +9,7 @@ export_presets.cfg
 *.pur
 
 # Project-specific ignores
-
+*.text_editor_state.json
 
 # Imported translations (automatically generated from CSV files)
 *.translation

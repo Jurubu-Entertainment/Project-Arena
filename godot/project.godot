@@ -160,6 +160,7 @@ _global_script_class_icons={
 
 config/name="Project Arena"
 run/main_scene="res://scenes/splash_screen/splash_screen.tscn"
+config/custom_user_dir_name="Talltale Studios/Project Arena"
 boot_splash/image="res://assets/graphics/black_bootsplash.png"
 config/icon="res://assets/graphics/game_icon.png"
 
@@ -168,6 +169,7 @@ config/icon="res://assets/graphics/game_icon.png"
 ErrorHandler="*res://autoload/error_handler.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 MusicHandler="*res://autoload/music_handler.tscn"
+Global="*res://autoload/global.gd"
 
 [display]
 

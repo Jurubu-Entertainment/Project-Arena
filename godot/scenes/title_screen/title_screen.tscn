@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/title_screen/title_screen.gd" type="Script" id=1]
+[ext_resource path="res://scenes/interface/options_menu.tscn" type="PackedScene" id=2]
 
 [node name="title_screen" type="CanvasLayer"]
 script = ExtResource( 1 )
+target_scene = "res://scenes/world/world.tscn"
 
 [node name="Title_Screen_Menu" type="Control" parent="."]
 margin_right = 40.0
@@ -47,7 +49,7 @@ margin_right = 50.0
 margin_bottom = -65.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 50, 10 )
-text = "START"
+text = "Start"
 
 [node name="Options_Button" type="Button" parent="Title_Screen_Menu/Overlay/Start_Menu"]
 anchor_left = 0.5
@@ -60,7 +62,7 @@ margin_right = 50.0
 margin_bottom = -15.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 50, 10 )
-text = "OPTIONS"
+text = "Options"
 
 [node name="Credits_Button" type="Button" parent="Title_Screen_Menu/Overlay/Start_Menu"]
 anchor_left = 0.5
@@ -73,8 +75,7 @@ margin_right = 50.0
 margin_bottom = 35.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 50, 10 )
-disabled = true
-text = "CREDITS"
+text = "Credits"
 
 [node name="Quit_Button" type="Button" parent="Title_Screen_Menu/Overlay/Start_Menu"]
 anchor_left = 0.5
@@ -87,9 +88,12 @@ margin_right = 50.0
 margin_bottom = 85.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 50, 10 )
-text = "QUIT"
+text = "Quit"
 
-[node name="QTD_Menu" type="Control" parent="Title_Screen_Menu/Overlay"]
+[node name="Options_Menu" parent="Title_Screen_Menu/Overlay" instance=ExtResource( 2 )]
+visible = false
+
+[node name="QTD_Confirmation" type="Control" parent="Title_Screen_Menu/Overlay"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -101,7 +105,7 @@ margin_right = 20.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 20, 20 )
 
-[node name="Panel" type="Panel" parent="Title_Screen_Menu/Overlay/QTD_Menu"]
+[node name="Panel" type="Panel" parent="Title_Screen_Menu/Overlay/QTD_Confirmation"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -112,7 +116,7 @@ margin_right = 100.0
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 20, 20 )
 
-[node name="Label" type="Label" parent="Title_Screen_Menu/Overlay/QTD_Menu"]
+[node name="Label" type="Label" parent="Title_Screen_Menu/Overlay/QTD_Confirmation"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -126,7 +130,7 @@ text = "Are you sure?"
 align = 1
 valign = 1
 
-[node name="Yes_Button" type="Button" parent="Title_Screen_Menu/Overlay/QTD_Menu"]
+[node name="Yes_Button" type="Button" parent="Title_Screen_Menu/Overlay/QTD_Confirmation"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -139,7 +143,7 @@ rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 20, 10 )
 text = "Yes"
 
-[node name="No_Button" type="Button" parent="Title_Screen_Menu/Overlay/QTD_Menu"]
+[node name="No_Button" type="Button" parent="Title_Screen_Menu/Overlay/QTD_Confirmation"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -152,14 +156,12 @@ rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 20, 10 )
 text = "No"
 
-[node name="Options_Menu" type="Control" parent="Title_Screen_Menu/Overlay"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 20, 20 )
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/Start_Menu/Start_Button" to="." method="_on_Start_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/Start_Menu/Options_Button" to="." method="_on_Options_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/Start_Menu/Credits_Button" to="." method="_on_Credits_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/Start_Menu/Quit_Button" to="." method="_on_Quit_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/Options_Menu/Overlay/Back_Button" to="." method="_on_Back_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/QTD_Confirmation/Yes_Button" to="." method="_on_Yes_Button_pressed"]
+[connection signal="pressed" from="Title_Screen_Menu/Overlay/QTD_Confirmation/No_Button" to="." method="_on_No_Button_pressed"]
+
+[editable path="Title_Screen_Menu/Overlay/Options_Menu"]

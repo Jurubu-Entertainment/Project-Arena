@@ -230,10 +230,10 @@
 												"Audio": {
 													"file_path": "res://assets/kenney/audio/kenney_digitalaudio/Audio",
 													"all": {
-														"desktop.ini": "res://assets/kenney/audio/kenney_digitalaudio/Audio/desktop.ini"
+
 													},
 													"files": [
-														"res://assets/kenney/audio/kenney_digitalaudio/Audio/desktop.ini"
+
 													],
 													"dirs": [
 
@@ -556,10 +556,10 @@
 												"Audio": {
 													"file_path": "res://assets/kenney/audio/sci-fi-sounds/Audio",
 													"all": {
-														"desktop.ini": "res://assets/kenney/audio/sci-fi-sounds/Audio/desktop.ini"
+
 													},
 													"files": [
-														"res://assets/kenney/audio/sci-fi-sounds/Audio/desktop.ini"
+
 													],
 													"dirs": [
 
@@ -1064,7 +1064,6 @@
 												"Game icons (base)": {
 													"file_path": "res://assets/kenney/graphics/gameicons-expansion/Game icons (base)",
 													"all": {
-														"license.txt": "res://assets/kenney/graphics/gameicons-expansion/Game icons (base)/license.txt",
 														"PNG": {
 															"file_path": "res://assets/kenney/graphics/gameicons-expansion/Game icons (base)/PNG",
 															"all": {
@@ -1202,7 +1201,7 @@
 														}
 													},
 													"files": [
-														"res://assets/kenney/graphics/gameicons-expansion/Game icons (base)/license.txt"
+
 													],
 													"dirs": [
 														"PNG",
@@ -1731,10 +1730,10 @@
 												"Tilesheet": {
 													"file_path": "res://assets/kenney/graphics/kenney_boardgameicons/Tilesheet",
 													"all": {
-														"Tilesheet.txt": "res://assets/kenney/graphics/kenney_boardgameicons/Tilesheet/Tilesheet.txt"
+
 													},
 													"files": [
-														"res://assets/kenney/graphics/kenney_boardgameicons/Tilesheet/Tilesheet.txt"
+
 													],
 													"dirs": [
 
@@ -2404,35 +2403,6 @@
 											"open": true,
 											"tint": "1,1,1,1"
 										},
-										"kenney_fontpackage": {
-											"file_path": "res://assets/kenney/graphics/kenney_fontpackage",
-											"all": {
-												"Fonts": {
-													"file_path": "res://assets/kenney/graphics/kenney_fontpackage/Fonts",
-													"all": {
-
-													},
-													"files": [
-
-													],
-													"dirs": [
-
-													],
-													"show": true,
-													"open": true,
-													"tint": "1,1,1,1"
-												}
-											},
-											"files": [
-
-											],
-											"dirs": [
-												"Fonts"
-											],
-											"show": true,
-											"open": true,
-											"tint": "1,1,1,1"
-										},
 										"kenney_pixelplatformer": {
 											"file_path": "res://assets/kenney/graphics/kenney_pixelplatformer",
 											"all": {
@@ -2458,21 +2428,6 @@
 													},
 													"files": [
 
-													],
-													"dirs": [
-
-													],
-													"show": true,
-													"open": true,
-													"tint": "1,1,1,1"
-												},
-												"Construct 3": {
-													"file_path": "res://assets/kenney/graphics/kenney_pixelplatformer/Construct 3",
-													"all": {
-														"Readme.txt": "res://assets/kenney/graphics/kenney_pixelplatformer/Construct 3/Readme.txt"
-													},
-													"files": [
-														"res://assets/kenney/graphics/kenney_pixelplatformer/Construct 3/Readme.txt"
 													],
 													"dirs": [
 
@@ -2518,7 +2473,6 @@
 											"dirs": [
 												"Background",
 												"Characters",
-												"Construct 3",
 												"Tilemap",
 												"Tiles"
 											],
@@ -3729,21 +3683,6 @@
 													"show": true,
 													"open": true,
 													"tint": "1,1,1,1"
-												},
-												"Unity samples": {
-													"file_path": "res://assets/kenney/graphics/particlePack/Unity samples",
-													"all": {
-
-													},
-													"files": [
-
-													],
-													"dirs": [
-
-													],
-													"show": true,
-													"open": true,
-													"tint": "1,1,1,1"
 												}
 											},
 											"files": [
@@ -3751,8 +3690,7 @@
 											],
 											"dirs": [
 												"PNG (Black background)",
-												"PNG (Transparent)",
-												"Unity samples"
+												"PNG (Transparent)"
 											],
 											"show": true,
 											"open": true,
@@ -3932,10 +3870,10 @@
 												"Spritesheet": {
 													"file_path": "res://assets/kenney/graphics/pixeluipack/Spritesheet",
 													"all": {
-														"spritesheetInfo.txt": "res://assets/kenney/graphics/pixeluipack/Spritesheet/spritesheetInfo.txt"
+
 													},
 													"files": [
-														"res://assets/kenney/graphics/pixeluipack/Spritesheet/spritesheetInfo.txt"
+
 													],
 													"dirs": [
 
@@ -5338,21 +5276,6 @@
 										"uipack-space": {
 											"file_path": "res://assets/kenney/graphics/uipack-space",
 											"all": {
-												"Fonts": {
-													"file_path": "res://assets/kenney/graphics/uipack-space/Fonts",
-													"all": {
-
-													},
-													"files": [
-
-													],
-													"dirs": [
-
-													],
-													"show": true,
-													"open": true,
-													"tint": "1,1,1,1"
-												},
 												"PNG": {
 													"file_path": "res://assets/kenney/graphics/uipack-space/PNG",
 													"all": {
@@ -5403,7 +5326,6 @@
 
 											],
 											"dirs": [
-												"Fonts",
 												"PNG",
 												"Spritesheet",
 												"Vector"
@@ -5417,21 +5339,6 @@
 											"all": {
 												"Bonus": {
 													"file_path": "res://assets/kenney/graphics/uipack_fixed/Bonus",
-													"all": {
-
-													},
-													"files": [
-
-													],
-													"dirs": [
-
-													],
-													"show": true,
-													"open": true,
-													"tint": "1,1,1,1"
-												},
-												"Font": {
-													"file_path": "res://assets/kenney/graphics/uipack_fixed/Font",
 													"all": {
 
 													},
@@ -5496,7 +5403,6 @@
 											],
 											"dirs": [
 												"Bonus",
-												"Font",
 												"PNG",
 												"Spritesheet",
 												"Vector"
@@ -5522,7 +5428,6 @@
 										"kenney_boardgameinfo",
 										"kenney_emotespack",
 										"kenney_foliagesprites",
-										"kenney_fontpackage",
 										"kenney_pixelplatformer",
 										"kenney_pixelshmup",
 										"kenney_rankspack",
@@ -5562,6 +5467,21 @@
 							"show": true,
 							"open": true,
 							"tint": "1,1,1,1"
+						},
+						"player": {
+							"file_path": "res://assets/player",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
 						}
 					},
 					"files": [
@@ -5570,7 +5490,8 @@
 					"dirs": [
 						"audio",
 						"graphics",
-						"kenney"
+						"kenney",
+						"player"
 					],
 					"show": true,
 					"open": true,
@@ -5920,98 +5841,7 @@
 		}
 	},
 	"file_data": {
-		"res://assets/kenney/graphics/pixeluipack/Spritesheet/spritesheetInfo.txt": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
 
-			},
-			"tags": {
-
-			}
-		},
-		"res://assets/kenney/graphics/kenney_pixelplatformer/Construct 3/Readme.txt": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
-
-			},
-			"tags": {
-
-			}
-		},
-		"res://assets/kenney/graphics/kenney_boardgameicons/Tilesheet/Tilesheet.txt": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
-
-			},
-			"tags": {
-
-			}
-		},
-		"res://assets/kenney/graphics/gameicons-expansion/Game icons (base)/license.txt": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
-
-			},
-			"tags": {
-
-			}
-		},
-		"res://assets/kenney/audio/sci-fi-sounds/Audio/desktop.ini": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
-				"-1": {
-					"deep": 0,
-					"name": "",
-					"tags": [
-
-					]
-				},
-				"0": {
-					"deep": 0,
-					"name": "ViewState",
-					"tags": [
-
-					]
-				}
-			},
-			"tags": {
-
-			}
-		},
-		"res://assets/kenney/audio/kenney_digitalaudio/Audio/desktop.ini": {
-			"icon": "",
-			"tint": "",
-			"open": false,
-			"symbols": {
-				"-1": {
-					"deep": 0,
-					"name": "",
-					"tags": [
-
-					]
-				},
-				"0": {
-					"deep": 0,
-					"name": "ViewState",
-					"tags": [
-
-					]
-				}
-			},
-			"tags": {
-
-			}
-		}
 	},
 	"div1": -300,
 	"div2": -80,

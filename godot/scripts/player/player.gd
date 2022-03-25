@@ -34,14 +34,14 @@ func _physics_process(_delta):
 	if roleplay.health > 0:
 		look()
 		fighting()
-		
+
 		var left = Input.get_action_strength("ui_left")
 		var right = Input.get_action_strength("ui_right")
 		var up = Input.get_action_strength("ui_up")
 		var down = Input.get_action_strength("ui_down")
-		
+
 		var dodge = Input.is_action_just_pressed("ui_accept")
-		
+
 		if dodge and can_dodge:
 			if not direction == Vector2(0,0):
 				trail.emitting = true
@@ -54,8 +54,8 @@ func _physics_process(_delta):
 				var _err = tween.interpolate_property(self, "global_position", origin,new_pos,0.15, tween.TRANS_LINEAR,tween.EASE_OUT_IN)
 				var _err2 = tween.start()
 				dodge_timer.start()
-	
-	
+
+
 		if not dodging:
 			direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 			_velocity = move_and_slide(direction * speed)
@@ -72,7 +72,7 @@ func look():
 		var point = gamepad_gun_rotate_point.get_collision_point()
 		if not gamepad_gun_rotate_point.is_colliding():
 			gun.rotation_degrees = 0
-		
+
 
 
 func fighting():

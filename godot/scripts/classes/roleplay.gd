@@ -1,27 +1,40 @@
 extends Node2D
 class_name Roleplay
 
+export var is_player := false
 export var health : int
 
-onready var anim : AnimationPlayer = $"../Skeleton/Animations"
-onready var death_anim : AnimationPlayer = $"../Skeleton/Death"
+export var blood_splatter : PackedScene
+export var blood_color : Color
+export var blood_swell_size : float
 
-func _ready():
-	var err = death_anim.connect("animation_finished", self, "_death_anim_finished")
-	if err != OK:
-		ErrorHandler.cant_connect(self.name)
+
+var rng_death_sprite := RandomNumberGenerator.new()
+
+
+onready var anim := $"../Skeleton/Animations"
 
 
 func damage(damage):
-	print(false)
 	if health > 0:
 		health -= damage
 	else:
-		death_anim.play("death")
-		pass
-	pass
+		if is_player:
+			$"../Skeleton".hide()
+			var node = blood_splatter.instance()
+			node.color = blood_color
+			node.size = blood_swell_size
+			$"../../../Decals".add_child(node)
+			node.global_position = self.global_position
+		else:
+			owner.queue_free()
+			var node = blood_splatter.instance()
+			node.color = blood_color
+			node.size = blood_swell_size
+			$"../../../Decals".add_child(node)
+			node.global_position = self.global_position
 
 
 func _death_anim_finished(anim_name):
 	if anim_name == "death":
-		owner.queue_free()
+		pass

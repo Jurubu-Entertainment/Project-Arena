@@ -4,11 +4,17 @@
 
 [node name="options_menu" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Overlay" type="ColorRect" parent="."]
 margin_right = 1600.0
 margin_bottom = 900.0
 color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="Overlay"]
 anchor_left = 0.5
@@ -33,3 +39,6 @@ margin_bottom = 10.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 30, 10 )
 text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}

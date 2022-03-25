@@ -30,19 +30,19 @@ func _ready():
 func _physics_process(delta):
 	if is_instance_valid(player):
 		look_at(player.global_position)
-		
+
 		if behavior == 0:
 			if not player_close:
 				position += transform.x * speed * delta
 				#position += (player.position - position)/50
-				
+
 				move_and_slide(motion)
-			
+
 			if player_close:
 				attacking = true
 			else:
 				attacking = false
-		
+
 		if attacking:
 			if has_attacked:
 				random.randomize()
@@ -53,8 +53,8 @@ func _physics_process(delta):
 				if num == 2:
 					has_attacked = false
 					anim_player.play(attack_2)
-		
-	
+
+
 
 
 func _on_Player_Proximity_body_entered(_body):

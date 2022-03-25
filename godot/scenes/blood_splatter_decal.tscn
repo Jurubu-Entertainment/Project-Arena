@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+var size := 1.5
+var color : Color
+
+var fade_to_alpha := false
+var reduce_size := false
+
+var rng_death_sprite := RandomNumberGenerator.new()
+
+
+onready var t_color := $color
+onready var t_size := $size
+onready var t_modulate := $modulate
+
+
+func _ready():
+	var splatter_path = \"res://assets/graphics/blood_splatter/splat\"
+	var rng_number = rng_death_sprite.randi_range(0,35)
+	if rng_number < 10:
+		var blood = load(str(splatter_path,\"0\",rng_number,\".png\"))
+		texture = blood
+	else:
+		var blood = load(str(splatter_path,rng_number,\".png\"))
+		texture = blood
+	if texture != null:
+		_splatter(size, color)
+
+
+func _splatter(_size, _color):
+	self_modulate = _color
+	
+	t_modulate.interpolate_property(self, \"modulate\", Color(\"ffffff\") ,Color(\"363636\"), GameplayOptions.bloodspatter_time, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	t_modulate.start()
+	fade_to_alpha = true
+	
+	t_size.interpolate_property(self, \"scale\", scale,Vector2(_size,_size), GameplayOptions.bloodspatter_time/200, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	t_size.start()
+	reduce_size = true
+
+
+func _on_tween_completed(object, key):
+	if key == \":modulate\" and fade_to_alpha:
+		t_modulate.interpolate_property(self, \"modulate\", Color(\"363636\"), Color(\"00363636\"), 10, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		t_modulate.start()
+		fade_to_alpha = false
+	
+	if key == \":modulate\" and not fade_to_alpha:
+		queue_free()
+	
+	if key == \":scale\" and reduce_size:
+		t_size.interpolate_property(self, \"scale\", scale, Vector2(1,1), .30, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		t_size.start()
+"
+
+[node name="Blood_Splatter_Decal" type="Sprite"]
+z_index = -3
+script = SubResource( 1 )
+
+[node name="color" type="Tween" parent="."]
+
+[node name="size" type="Tween" parent="."]
+
+[node name="modulate" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="size" to="." method="_on_tween_completed"]
+[connection signal="tween_completed" from="modulate" to="." method="_on_tween_completed"]

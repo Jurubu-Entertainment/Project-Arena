@@ -10,21 +10,7 @@
 [ext_resource path="res://animations/humanoid/melee_2.anim" type="Animation" id=8]
 [ext_resource path="res://animations/humanoid/melee_1.anim" type="Animation" id=9]
 [ext_resource path="res://scenes/prefabs/humanoid_skeleton.gd" type="Script" id=10]
-
-[sub_resource type="Animation" id=19]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
+[ext_resource path="res://assets/graphics/player/hand_steadying_gun.png" type="Texture" id=11]
 
 [node name="Skeleton" type="Skeleton2D"]
 script = ExtResource( 10 )
@@ -37,9 +23,6 @@ anims/melee_2 = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Death" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 19 )
 
 [node name="Torso" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -77,6 +60,11 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Leftarm/Forearm/Hand"]
 position = Vector2( 13, 0 )
+
+[node name="Sprite" type="Sprite" parent="Leftarm/Forearm/Hand"]
+position = Vector2( 13.8511, 1.46501 )
+rotation = -0.785397
+texture = ExtResource( 11 )
 
 [node name="Forearm" type="Sprite" parent="Leftarm/Forearm"]
 position = Vector2( 17.835, 6.84939 )
@@ -158,5 +146,3 @@ default_length = 74.0
 [node name="Head" type="Sprite" parent="Head"]
 position = Vector2( 10, 0 )
 texture = ExtResource( 4 )
-
-[node name="Death_Sprite" type="Sprite" parent="."]

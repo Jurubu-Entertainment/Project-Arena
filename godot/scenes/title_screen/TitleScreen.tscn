@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/interface/OptionsMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/interface/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/title_screen/TitleScreen.gd" type="Script" id=2]
 
 [node name="TitleScreen" type="CanvasLayer"]
@@ -90,7 +90,7 @@ rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 50, 10 )
 text = "Quit"
 
-[node name="OptionsMenu" parent="MainMenu/Overlay" instance=ExtResource( 1 )]
+[node name="SettingsMenu" parent="MainMenu/Overlay" instance=ExtResource( 1 )]
 visible = false
 
 [node name="QuitConfirmation" type="Control" parent="MainMenu/Overlay"]
@@ -160,8 +160,8 @@ text = "No"
 [connection signal="pressed" from="MainMenu/Overlay/StartMenu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MainMenu/Overlay/StartMenu/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainMenu/Overlay/StartMenu/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="MainMenu/Overlay/OptionsMenu/Overlay/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MainMenu/Overlay/SettingsMenu/Overlay/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MainMenu/Overlay/QuitConfirmation/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="MainMenu/Overlay/QuitConfirmation/NoButton" to="." method="_on_NoButton_pressed"]
 
-[editable path="MainMenu/Overlay/OptionsMenu"]
+[editable path="MainMenu/Overlay/SettingsMenu"]

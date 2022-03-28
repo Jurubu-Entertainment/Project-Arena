@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/interface/SettingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/interface/tile_0604.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/graphics/interface/tile_0085.png" type="Texture" id=4]
 [ext_resource path="res://assets/graphics/interface/tile_0087.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/interface/tile_0631.png" type="Texture" id=6]
+[ext_resource path="res://scripts/interface/SettingsTabs.gd" type="Script" id=7]
 
 [node name="SettingsMenu" type="Control"]
 script = ExtResource( 1 )
@@ -46,6 +47,7 @@ valign = 1
 [node name="SettingsTabs" type="Control" parent="Overlay"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 7 )
 
 [node name="GameplayButton" type="Button" parent="Overlay/SettingsTabs"]
 margin_left = 200.0
@@ -215,10 +217,20 @@ margin_bottom = 260.0
 rect_scale = Vector2( 1.25, 1.25 )
 flat = true
 
+[node name="ColorRect" type="ColorRect" parent="Overlay/GameplaySettings"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="AudioSettings" type="Control" parent="Overlay"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Overlay/AudioSettings"]
+margin_left = 395.0
+margin_top = 106.0
+margin_right = 435.0
+margin_bottom = 146.0
 
 [node name="VideoSettings" type="Control" parent="Overlay"]
 visible = false
@@ -250,4 +262,12 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
+[connection signal="pressed" from="Overlay/SettingsTabs/GameplayButton" to="Overlay/SettingsTabs" method="_on_GameplayButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/AudioButton" to="Overlay/SettingsTabs" method="_on_AudioButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/VideoButton" to="Overlay/SettingsTabs" method="_on_VideoButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/GraphicsButton" to="Overlay/SettingsTabs" method="_on_GraphicsButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/InterfaceButton" to="Overlay/SettingsTabs" method="_on_InterfaceButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/ControlsButton" to="Overlay/SettingsTabs" method="_on_ControlsButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/KeymappingButton" to="Overlay/SettingsTabs" method="_on_KeymappingButton_pressed"]
+[connection signal="pressed" from="Overlay/SettingsTabs/AccessibilityButton" to="Overlay/SettingsTabs" method="_on_AccessibilityButton_pressed"]
 [connection signal="value_changed" from="Overlay/VSlider" to="." method="_on_VSlider_value_changed"]

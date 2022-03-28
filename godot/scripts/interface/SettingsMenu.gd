@@ -24,4 +24,5 @@ func _physics_process(_delta) -> void:
 
 
 func _on_VSlider_value_changed(value):
-	target.rect_position.y = value
+	#target.rect_position.y = value
+	pass

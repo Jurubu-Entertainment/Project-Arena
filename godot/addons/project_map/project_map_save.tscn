@@ -141,7 +141,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/classes/attacks_humanoid.tscn"
+path = "res://scenes/classes/AttacksHumanoid.tscn"
 icon_class = "Node2D"
 script_path = "res://scripts/classes/attacks_humanoid.gd"
 script_name = "attacks_humanoid.gd"
@@ -167,7 +167,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/classes/roleplay.tscn"
+path = "res://scenes/classes/Roleplay.tscn"
 icon_class = "Area2D"
 script_path = "res://scripts/classes/roleplay.gd"
 script_name = "roleplay.gd"
@@ -193,7 +193,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/projectiles/bullet.tscn"
+path = "res://scenes/projectiles/Bullet.tscn"
 icon_class = "KinematicBody2D"
 script_path = "res://scripts/projectiles/bullet.gd"
 script_name = "bullet.gd"
@@ -219,7 +219,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/prefabs/humanoid_skeleton.tscn"
+path = "res://prefabs/humanoid_skeleton/HumanoidSkeleton.tscn"
 icon_class = "Skeleton2D"
 script_path = "res://scenes/prefabs/humanoid_skeleton.gd"
 script_name = "humanoid_skeleton.gd"
@@ -246,7 +246,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-path = "res://scenes/player/player.tscn"
+path = "res://scenes/player/Player.tscn"
 icon_class = "KinematicBody2D"
 script_path = "res://scripts/player/player.gd"
 script_name = "player.gd"

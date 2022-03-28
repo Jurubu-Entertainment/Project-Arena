@@ -1,8 +1,8 @@
 extends Node
 
-func cant_connect(node_name):
+
+func cant_connect(node_name) -> void:
 	var error = "ERROR: "
 	var error_num = ERR_CANT_CONNECT
 	var error_name = ": ERR_CANT_CONNECT :"
-
 	print(error,error_num,error_name,node_name)

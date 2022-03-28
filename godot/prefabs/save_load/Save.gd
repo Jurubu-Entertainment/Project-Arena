@@ -1,5 +1,6 @@
 extends Node
 
+
 # If there is a file with the same name, in the same directory, should it be overwritten?
 export(int, "JSON", "Config") var file_format
 
@@ -37,12 +38,6 @@ func save_data():
 		return ERR_FILE_CANT_WRITE
 
 	current_property = 0
-
-
-
-
-
-
 
 
 func load_data():

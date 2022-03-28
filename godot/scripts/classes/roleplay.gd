@@ -1,6 +1,7 @@
 extends Node2D
 class_name Roleplay
 
+
 export var is_player := false
 export var health : int
 
@@ -12,10 +13,10 @@ export var blood_swell_size : float
 var rng_death_sprite := RandomNumberGenerator.new()
 
 
-onready var anim := $"../Skeleton/Animations"
+onready var anim := $"../HumanoidSkeleton/Animations"
 
 
-func damage(damage):
+func damage(damage) -> void:
 	if health > 0:
 		health -= damage
 	else:
@@ -35,6 +36,6 @@ func damage(damage):
 			node.global_position = self.global_position
 
 
-func _death_anim_finished(anim_name):
+func _death_anim_finished(anim_name) -> void:
 	if anim_name == "death":
 		pass

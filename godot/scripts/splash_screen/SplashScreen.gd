@@ -17,6 +17,6 @@ func _physics_process(_delta) -> void:
 			print(ERR_CANT_OPEN, "ERR_CANT_OPEN", target_scene)
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(anim_name) -> void:
 	if anim_name == "Fade" or "Splash_Screen":
 		transition = true

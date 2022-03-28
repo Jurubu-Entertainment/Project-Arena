@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://scripts/mobs/enemy.gd"
+"path": "res://scripts/mobs/Enemy.gd"
 }, {
 "base": "PanelContainer",
 "class": "HistoryRow",
@@ -92,17 +92,17 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Humanoid_Attacks",
 "language": "GDScript",
-"path": "res://scripts/classes/attacks_humanoid.gd"
+"path": "res://scripts/classes/AttacksHumanoid.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://scripts/projectiles/bullet.gd"
+"path": "res://scripts/projectiles/Bullet.gd"
 }, {
 "base": "Node2D",
 "class": "Roleplay",
 "language": "GDScript",
-"path": "res://scripts/classes/roleplay.gd"
+"path": "res://scripts/classes/Roleplay.gd"
 }, {
 "base": "Control",
 "class": "TE_Editor",
@@ -127,7 +127,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://scripts/classes/weapon.gd"
+"path": "res://scripts/classes/Weapon.gd"
 } ]
 _global_script_class_icons={
 "AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
@@ -159,7 +159,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project Arena"
-run/main_scene="res://scenes/splash_screen/splash_screen.tscn"
+run/main_scene="res://scenes/splash_screen/SplashScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Talltale Studios/Project Arena"
 boot_splash/image="res://assets/graphics/black_bootsplash.png"
@@ -167,11 +167,11 @@ config/icon="res://assets/graphics/game_icon.png"
 
 [autoload]
 
-ErrorHandler="*res://autoload/error_handler.gd"
+ErrorHandler="*res://autoload/ErrorHandler.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
-MusicHandler="*res://autoload/music_handler.tscn"
-Global="*res://autoload/global.gd"
-GameplayOptions="*res://autoload/gameplay_options.gd"
+MusicHandler="*res://autoload/MusicHandler.tscn"
+Global="*res://autoload/Global.gd"
+GameplayOptions="*res://autoload/GameplayOptions.gd"
 
 [display]
 
@@ -187,7 +187,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/SliderLabel/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/branch/plugin.cfg", "res://addons/dardanbujupaj.node_warnings/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/epic-anchors/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/orphan_import_file_cleaner/plugin.cfg", "res://addons/project_map/plugin.cfg", "res://addons/sprite_quick_offset/plugin.cfg", "res://addons/zoomy/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/SliderLabel/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/branch/plugin.cfg", "res://addons/dardanbujupaj.node_warnings/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/epic-anchors/plugin.cfg", "res://addons/launchy/plugin.cfg", "res://addons/orphan_import_file_cleaner/plugin.cfg", "res://addons/project_map/plugin.cfg", "res://addons/sprite_quick_offset/plugin.cfg", "res://addons/text_editor/plugin.cfg", "res://addons/zoomy/plugin.cfg" )
 
 [importer_defaults]
 

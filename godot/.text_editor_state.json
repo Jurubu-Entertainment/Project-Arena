@@ -103,6 +103,21 @@
 						"graphics": {
 							"file_path": "res://assets/graphics",
 							"all": {
+								"blood_splatter": {
+									"file_path": "res://assets/graphics/blood_splatter",
+									"all": {
+
+									},
+									"files": [
+
+									],
+									"dirs": [
+
+									],
+									"show": true,
+									"open": true,
+									"tint": "1,1,1,1"
+								},
 								"interface": {
 									"file_path": "res://assets/graphics/interface",
 									"all": {
@@ -176,14 +191,31 @@
 									"show": true,
 									"open": true,
 									"tint": "1,1,1,1"
+								},
+								"projectiles": {
+									"file_path": "res://assets/graphics/projectiles",
+									"all": {
+
+									},
+									"files": [
+
+									],
+									"dirs": [
+
+									],
+									"show": true,
+									"open": true,
+									"tint": "1,1,1,1"
 								}
 							},
 							"files": [
 
 							],
 							"dirs": [
+								"blood_splatter",
 								"interface",
-								"player"
+								"player",
+								"projectiles"
 							],
 							"show": true,
 							"open": true,
@@ -232,11 +264,124 @@
 					"open": true,
 					"tint": "1,1,1,1"
 				},
+				"dialogic": {
+					"file_path": "res://dialogic",
+					"all": {
+						"characters": {
+							"file_path": "res://dialogic/characters",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"custom-events": {
+							"file_path": "res://dialogic/custom-events",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"definitions.json": "res://dialogic/definitions.json",
+						"folder_structure.json": "res://dialogic/folder_structure.json",
+						"settings.cfg": "res://dialogic/settings.cfg",
+						"sounds": {
+							"file_path": "res://dialogic/sounds",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"themes": {
+							"file_path": "res://dialogic/themes",
+							"all": {
+								"default-theme.cfg": "res://dialogic/themes/default-theme.cfg"
+							},
+							"files": [
+								"res://dialogic/themes/default-theme.cfg"
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"timelines": {
+							"file_path": "res://dialogic/timelines",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						}
+					},
+					"files": [
+						"res://dialogic/settings.cfg",
+						"res://dialogic/definitions.json",
+						"res://dialogic/folder_structure.json"
+					],
+					"dirs": [
+						"characters",
+						"custom-events",
+						"sounds",
+						"themes",
+						"timelines"
+					],
+					"show": true,
+					"open": true,
+					"tint": "1,1,1,1"
+				},
 				"scenes": {
 					"file_path": "res://scenes",
 					"all": {
 						"classes": {
 							"file_path": "res://scenes/classes",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"credits_screen": {
+							"file_path": "res://scenes/credits_screen",
 							"all": {
 
 							},
@@ -376,6 +521,7 @@
 					],
 					"dirs": [
 						"classes",
+						"credits_screen",
 						"interface",
 						"mobs",
 						"player",
@@ -394,6 +540,21 @@
 					"all": {
 						"classes": {
 							"file_path": "res://scripts/classes",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"credits_screen": {
+							"file_path": "res://scripts/credits_screen",
 							"all": {
 
 							},
@@ -439,6 +600,21 @@
 						},
 						"player": {
 							"file_path": "res://scripts/player",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"prefabs": {
+							"file_path": "res://scripts/prefabs",
 							"all": {
 
 							},
@@ -503,9 +679,11 @@
 					],
 					"dirs": [
 						"classes",
+						"credits_screen",
 						"interface",
 						"mobs",
 						"player",
+						"prefabs",
 						"projectiles",
 						"splash_screen",
 						"title_screen"
@@ -522,6 +700,7 @@
 				"animations",
 				"assets",
 				"autoload",
+				"dialogic",
 				"scenes",
 				"scripts"
 			],
@@ -531,7 +710,214 @@
 		}
 	},
 	"file_data": {
+		"res://dialogic/settings.cfg": {
+			"icon": "",
+			"tint": "",
+			"open": false,
+			"symbols": {
+				"-1": {
+					"deep": 0,
+					"name": "",
+					"tags": [
 
+					]
+				},
+				"0": {
+					"deep": 0,
+					"name": "updates",
+					"tags": [
+
+					]
+				},
+				"4": {
+					"deep": 0,
+					"name": "editor",
+					"tags": [
+
+					]
+				}
+			},
+			"tags": {
+
+			}
+		},
+		"res://dialogic/folder_structure.json": {
+			"icon": "",
+			"tint": "",
+			"open": false,
+			"symbols": {
+				"-1": {
+					"deep": 0,
+					"name": "",
+					"tags": [
+
+					]
+				},
+				"4": {
+					"deep": 0,
+					"name": "folders",
+					"tags": [
+
+					]
+				},
+				"5": {
+					"deep": 1,
+					"name": "Characters",
+					"tags": [
+
+					]
+				},
+				"9": {
+					"deep": 2,
+					"name": "folders",
+					"tags": [
+
+					]
+				},
+				"12": {
+					"deep": 2,
+					"name": "metadata",
+					"tags": [
+
+					]
+				},
+				"17": {
+					"deep": 1,
+					"name": "Definitions",
+					"tags": [
+
+					]
+				},
+				"21": {
+					"deep": 2,
+					"name": "folders",
+					"tags": [
+
+					]
+				},
+				"24": {
+					"deep": 2,
+					"name": "metadata",
+					"tags": [
+
+					]
+				},
+				"29": {
+					"deep": 1,
+					"name": "Themes",
+					"tags": [
+
+					]
+				},
+				"33": {
+					"deep": 2,
+					"name": "folders",
+					"tags": [
+
+					]
+				},
+				"36": {
+					"deep": 2,
+					"name": "metadata",
+					"tags": [
+
+					]
+				},
+				"41": {
+					"deep": 1,
+					"name": "Timelines",
+					"tags": [
+
+					]
+				},
+				"45": {
+					"deep": 2,
+					"name": "folders",
+					"tags": [
+
+					]
+				},
+				"48": {
+					"deep": 2,
+					"name": "metadata",
+					"tags": [
+
+					]
+				}
+			},
+			"tags": {
+
+			}
+		},
+		"res://dialogic/definitions.json": {
+			"icon": "",
+			"tint": "",
+			"open": false,
+			"symbols": {
+				"-1": {
+					"deep": 0,
+					"name": "",
+					"tags": [
+
+					]
+				}
+			},
+			"tags": {
+
+			}
+		},
+		"res://dialogic/themes/default-theme.cfg": {
+			"icon": "",
+			"tint": "",
+			"open": false,
+			"symbols": {
+				"-1": {
+					"deep": 0,
+					"name": "",
+					"tags": [
+
+					]
+				},
+				"0": {
+					"deep": 0,
+					"name": "settings",
+					"tags": [
+
+					]
+				},
+				"4": {
+					"deep": 0,
+					"name": "text",
+					"tags": [
+
+					]
+				},
+				"8": {
+					"deep": 0,
+					"name": "wave amp=150 freq=5",
+					"tags": [
+
+					]
+				},
+				"10": {
+					"deep": 0,
+					"name": "buttons",
+					"tags": [
+
+					]
+				},
+				"17": {
+					"deep": 0,
+					"name": "next_indicator",
+					"tags": [
+
+					]
+				}
+			},
+			"tags": {
+
+			}
+		}
 	},
 	"div1": -300,
 	"div2": -80,

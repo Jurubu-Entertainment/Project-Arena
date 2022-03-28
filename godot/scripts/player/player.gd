@@ -1,15 +1,8 @@
 extends KinematicBody2D
 
+
 export var speed : float
 
-
-onready var tween : Tween = $Tween
-onready var dodge_timer : Timer = $Dodge_Cooldown
-onready var trail : Particles2D = $Trail
-onready var gun : Node2D = $Gun
-onready var head : Bone2D = $Skeleton/Head
-onready var attacks = $Attacks_Humanoid
-onready var roleplay= $Roleplay
 
 var _velocity : Vector2 = Vector2.ZERO
 
@@ -24,13 +17,23 @@ var rs_look = Vector2(0,0)
 var deadzone = 0.3
 
 
-func _ready():
+onready var tween : Tween = $Tween
+onready var dodge_timer : Timer = $DodgeCooldown
+onready var trail : Particles2D = $Trail
+onready var gun : Node2D = $Gun
+onready var head : Bone2D = $HumanoidSkeleton/Head
+onready var attacks : Node2D = $AttacksHumanoid
+onready var roleplay : Area2D = $Roleplay
+
+
+func _ready() -> void:
 	OS.window_fullscreen = true
 	var err = Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 	if err != OK:
 		ErrorHandler.cant_connect(self.name)
 
-func _physics_process(_delta):
+
+func _physics_process(_delta) -> void:
 	if roleplay.health > 0:
 		look()
 		fighting()
@@ -55,13 +58,12 @@ func _physics_process(_delta):
 				var _err2 = tween.start()
 				dodge_timer.start()
 
-
 		if not dodging:
 			direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 			_velocity = move_and_slide(direction * speed)
 
 
-func look():
+func look() -> void:
 	if not use_gamepad:
 		var mouse_pos = get_global_mouse_position()
 		look_at(mouse_pos)
@@ -74,31 +76,30 @@ func look():
 			gun.rotation_degrees = 0
 
 
-
-func fighting():
+func fighting() -> void:
 	if Input.is_action_pressed("melee_attack"):
 		attacks.melee()
 	if Input.is_action_pressed("shoot_primary"):
 		attacks.fire_primary()
-	pass
 
 
-func rslook():
+func rslook() -> void:
 	rs_look.y = Input.get_joy_axis(0, JOY_AXIS_3)
 	rs_look.x = Input.get_joy_axis(0, JOY_AXIS_2)
 	if rs_look.length() >= deadzone:
 		rotation = rs_look.angle()
 
 
-func _on_Dodge_Cooldown_timeout():
+func _on_DodgeCooldown_timeout() -> void:
 	can_dodge = true
 
 
-func _on_Tween_tween_completed(_object, _key):
+func _on_Tween_tween_completed(_object, _key) -> void:
 	dodging = false
 	trail.emitting = false
 
-func _on_joy_connection_changed(device_id, connected):
+
+func _on_joy_connection_changed(device_id, connected) -> void:
 	if connected:
 		use_gamepad = true
 		print(Input.get_joy_name(device_id))

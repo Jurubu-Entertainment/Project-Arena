@@ -8,10 +8,6 @@ export var attack_1 : String
 export var attack_2 : String
 
 
-onready var player : KinematicBody2D = get_node("../../Player/Player")
-onready var anim_player = $AnimationPlayer
-
-
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var player_close : bool = false
@@ -23,11 +19,15 @@ var current_attack : int
 var motion = Vector2()
 
 
-func _ready():
+onready var player : KinematicBody2D = get_node("../../Player/Player")
+onready var anim_player : AnimationPlayer = $AnimationPlayer
+
+
+func _ready() -> void:
 	origin = global_position
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if is_instance_valid(player):
 		look_at(player.global_position)
 
@@ -57,14 +57,14 @@ func _physics_process(delta):
 
 
 
-func _on_Player_Proximity_body_entered(_body):
+func _on_PlayerProximity_body_entered(_body) -> void:
 	player_close = true
 
 
-func _on_Player_Proximity_body_exited(_body):
+func _on_PlayerProximity_body_exited(_body) -> void:
 	player_close = false
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(anim_name) -> void:
 	if anim_name == attack_1 or attack_2:
 		has_attacked = true

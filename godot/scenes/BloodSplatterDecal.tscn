@@ -3,6 +3,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
 
+
 var size := 1.5
 var color : Color
 
@@ -12,9 +13,9 @@ var reduce_size := false
 var rng_death_sprite := RandomNumberGenerator.new()
 
 
-onready var t_color := $color
-onready var t_size := $size
-onready var t_modulate := $modulate
+onready var t_color := $Color
+onready var t_size := $Size
+onready var t_modulate := $Modulate
 
 
 func _ready():
@@ -56,15 +57,15 @@ func _on_tween_completed(object, key):
 		t_size.start()
 "
 
-[node name="Blood_Splatter_Decal" type="Sprite"]
+[node name="BloodSplatterDecal" type="Sprite"]
 z_index = -3
 script = SubResource( 1 )
 
-[node name="color" type="Tween" parent="."]
+[node name="Color" type="Tween" parent="."]
 
-[node name="size" type="Tween" parent="."]
+[node name="Size" type="Tween" parent="."]
 
-[node name="modulate" type="Tween" parent="."]
+[node name="Modulate" type="Tween" parent="."]
 
-[connection signal="tween_completed" from="size" to="." method="_on_tween_completed"]
-[connection signal="tween_completed" from="modulate" to="." method="_on_tween_completed"]
+[connection signal="tween_completed" from="Size" to="." method="_on_tween_completed"]
+[connection signal="tween_completed" from="Modulate" to="." method="_on_tween_completed"]

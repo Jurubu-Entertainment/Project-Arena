@@ -9,10 +9,10 @@
 [ext_resource path="res://assets/graphics/player/forearm.png" type="Texture" id=7]
 [ext_resource path="res://animations/humanoid/melee_2.anim" type="Animation" id=8]
 [ext_resource path="res://animations/humanoid/melee_1.anim" type="Animation" id=9]
-[ext_resource path="res://scenes/prefabs/humanoid_skeleton.gd" type="Script" id=10]
+[ext_resource path="res://prefabs/humanoid_skeleton/HumanoidSkeleton.gd" type="Script" id=10]
 [ext_resource path="res://assets/graphics/player/hand_steadying_gun.png" type="Texture" id=11]
 
-[node name="Skeleton" type="Skeleton2D"]
+[node name="HumanoidSkeleton" type="Skeleton2D"]
 script = ExtResource( 10 )
 
 [node name="Animations" type="AnimationPlayer" parent="."]
@@ -25,9 +25,11 @@ __meta__ = {
 }
 
 [node name="Torso" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 6 )
 
 [node name="Leftarm" type="Bone2D" parent="."]
+visible = false
 position = Vector2( 4, -57 )
 rotation = -0.261799
 rest = Transform2D( 0.965926, -0.258819, 0.258819, 0.965926, 4, -57 )
@@ -46,7 +48,7 @@ rest = Transform2D( 1, 0, 0, 1, 44.6406, -0.461903 )
 
 [node name="Hand" type="Bone2D" parent="Leftarm/Forearm"]
 position = Vector2( 41.655, 18.4083 )
-rotation = 0.523598
+rotation = 0.614169
 rest = Transform2D( 0.866026, 0.499999, -0.499999, 0.866026, 41.655, 18.4083 )
 default_length = 28.0
 
@@ -62,6 +64,7 @@ __meta__ = {
 position = Vector2( 13, 0 )
 
 [node name="Sprite" type="Sprite" parent="Leftarm/Forearm/Hand"]
+visible = false
 position = Vector2( 13.8511, 1.46501 )
 rotation = -0.785397
 texture = ExtResource( 11 )
@@ -75,6 +78,7 @@ __meta__ = {
 }
 
 [node name="Rightarm" type="Bone2D" parent="."]
+visible = false
 position = Vector2( 4, 57 )
 rotation = -0.261799
 rest = Transform2D( 0.965926, -0.258819, 0.258819, 0.965926, 4, 57 )
@@ -101,16 +105,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="One_Handed_Weapons" type="Node2D" parent="Rightarm/Forearm/Hand"]
-visible = false
+[node name="OneHandedWeapons" type="Node2D" parent="Rightarm/Forearm/Hand"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1.52588e-05, 0 )
 rotation = 0.0718002
 scale = Vector2( 1, -1 )
 
-[node name="Knife" type="Node2D" parent="Rightarm/Forearm/Hand/One_Handed_Weapons"]
+[node name="Knife" type="Node2D" parent="Rightarm/Forearm/Hand/OneHandedWeapons"]
 position = Vector2( 18.0739, 3.21468 )
 
-[node name="Knife" type="Sprite" parent="Rightarm/Forearm/Hand/One_Handed_Weapons/Knife"]
+[node name="Knife" type="Sprite" parent="Rightarm/Forearm/Hand/OneHandedWeapons/Knife"]
 position = Vector2( 0, -20 )
 rotation = -1.57079
 texture = ExtResource( 2 )
@@ -140,6 +144,7 @@ __meta__ = {
 }
 
 [node name="Head" type="Bone2D" parent="."]
+visible = false
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 default_length = 74.0
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/mobs/enemy.gd" type="Script" id=1]
-[ext_resource path="res://scenes/classes/roleplay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/prefabs/humanoid_skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/mobs/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/classes/Roleplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/humanoid_skeleton/HumanoidSkeleton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=4]
-[ext_resource path="res://scenes/blood_splatter_decal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BloodSplatterDecal.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 34.0147
@@ -17,7 +17,7 @@ resource_name = "big pop"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Attack_Radius_2/Attack:modulate")
+tracks/0/path = NodePath("AttackRadius02/Attack:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +34,7 @@ resource_name = "small pop"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Attack_Radius_1/Attack/Polygon2D:color")
+tracks/0/path = NodePath("AttackRadius01/Attack/Polygon2D:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -49,7 +49,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 5, 5 )
 
-[node name="Enemy_Base" type="KinematicBody2D"]
+[node name="EnemyBase" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource( 1 )
@@ -68,45 +68,45 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
-[node name="Player_Proximity" type="Area2D" parent="."]
+[node name="PlayerProximity" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Proximity"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerProximity"]
 polygon = PoolVector2Array( 8, -6, 6, -8, -6, -8, -8, -6, -8, 6, -6, 8, 6, 8, 8, 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/big pop" = SubResource( 3 )
 "anims/small pop" = SubResource( 2 )
 
-[node name="Attack_Radius_1" type="Area2D" parent="."]
+[node name="AttackRadius01" type="Area2D" parent="."]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Attack_Radius_1"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AttackRadius01"]
 polygon = PoolVector2Array( 10, 7, 7, 10, -7, 10, -10, 7, -10, -7, -7, -10, 7, -10, 10, -7 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Attack" type="Node2D" parent="Attack_Radius_1"]
+[node name="Attack" type="Node2D" parent="AttackRadius01"]
 
-[node name="Polygon2D" type="Polygon2D" parent="Attack_Radius_1/Attack"]
+[node name="Polygon2D" type="Polygon2D" parent="AttackRadius01/Attack"]
 color = Color( 1, 1, 1, 0 )
 polygon = PoolVector2Array( 8, -6, 8, 6, 6, 8, -6, 8, -8, 6, -8, -6, -6, -8, 6, -8, 7, -10, -7, -10, -10, -7, -10, 7, -7, 10, 7, 10, 10, 7, 10, -7, 7, -10, 6, -8 )
 
-[node name="Attack_Radius_2" type="Area2D" parent="."]
+[node name="AttackRadius02" type="Area2D" parent="."]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Attack_Radius_2"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AttackRadius02"]
 polygon = PoolVector2Array( 13, 8, 8, 13, -8, 13, -13, 8, -13, -8, -8, -13, 8, -13, 13, -8 )
 
-[node name="Attack" type="Node2D" parent="Attack_Radius_2"]
+[node name="Attack" type="Node2D" parent="AttackRadius02"]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="Polygon2D" type="Polygon2D" parent="Attack_Radius_2/Attack"]
+[node name="Polygon2D" type="Polygon2D" parent="AttackRadius02/Attack"]
 polygon = PoolVector2Array( 7, -10, -7, -10, -10, -7, -10, 7, -7, 10, 7, 10, 10, 7, 10, -7, 13, -8, 13, 8, 8, 13, -8, 13, -13, 8, -13, -8, -8, -13, 8, -13, 13, -8, 10, -7 )
 
-[node name="Attack_Rate" type="Timer" parent="."]
+[node name="AttackRate" type="Timer" parent="."]
 
 [node name="Roleplay" parent="." instance=ExtResource( 2 )]
 collision_layer = 514
@@ -118,26 +118,14 @@ blood_swell_size = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roleplay"]
 shape = SubResource( 4 )
 
-[node name="Skeleton" parent="." instance=ExtResource( 3 )]
+[node name="HumanoidSkeleton" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 
-[node name="Torso" parent="Skeleton" index="1"]
-visible = false
-
-[node name="Leftarm" parent="Skeleton" index="2"]
-visible = false
-
-[node name="Hand" parent="Skeleton/Leftarm/Forearm" index="0"]
+[node name="Hand" parent="HumanoidSkeleton/Leftarm/Forearm" index="0"]
 position = Vector2( 44.2196, 82.2474 )
 rotation = 0.261799
 
-[node name="Rightarm" parent="Skeleton" index="3"]
-visible = false
-
-[node name="Head" parent="Skeleton" index="4"]
-visible = false
-
-[node name="Polygon2D" type="Polygon2D" parent="Skeleton"]
+[node name="Polygon2D" type="Polygon2D" parent="HumanoidSkeleton"]
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( -5, -5, 5, -5, 5, 5, -5, 5 )
 
@@ -149,8 +137,8 @@ stroke_color = Color( 0.61, 0.0427, 0.0427, 1 )
 stroke_width = 4.868
 stroke_sharp_limit = 0.0
 
-[connection signal="body_entered" from="Player_Proximity" to="." method="_on_Player_Proximity_body_entered"]
-[connection signal="body_exited" from="Player_Proximity" to="." method="_on_Player_Proximity_body_exited"]
+[connection signal="body_entered" from="PlayerProximity" to="." method="_on_PlayerProximity_body_entered"]
+[connection signal="body_exited" from="PlayerProximity" to="." method="_on_PlayerProximity_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
-[editable path="Skeleton"]
+[editable path="HumanoidSkeleton"]

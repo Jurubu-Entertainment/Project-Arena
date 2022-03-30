@@ -39,7 +39,6 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-target_scene = "res://scenes/title_screen/TitleScreen.tscn"
 
 [node name="Backdrop" type="ColorRect" parent="."]
 margin_right = 1600.0

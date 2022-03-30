@@ -362,6 +362,51 @@
 					"open": true,
 					"tint": "1,1,1,1"
 				},
+				"prefabs": {
+					"file_path": "res://prefabs",
+					"all": {
+						"humanoid_skeleton": {
+							"file_path": "res://prefabs/humanoid_skeleton",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						},
+						"save_load": {
+							"file_path": "res://prefabs/save_load",
+							"all": {
+
+							},
+							"files": [
+
+							],
+							"dirs": [
+
+							],
+							"show": true,
+							"open": true,
+							"tint": "1,1,1,1"
+						}
+					},
+					"files": [
+
+					],
+					"dirs": [
+						"humanoid_skeleton",
+						"save_load"
+					],
+					"show": true,
+					"open": true,
+					"tint": "1,1,1,1"
+				},
 				"scenes": {
 					"file_path": "res://scenes",
 					"all": {
@@ -427,21 +472,6 @@
 						},
 						"player": {
 							"file_path": "res://scenes/player",
-							"all": {
-
-							},
-							"files": [
-
-							],
-							"dirs": [
-
-							],
-							"show": true,
-							"open": true,
-							"tint": "1,1,1,1"
-						},
-						"prefabs": {
-							"file_path": "res://scenes/prefabs",
 							"all": {
 
 							},
@@ -525,7 +555,6 @@
 						"interface",
 						"mobs",
 						"player",
-						"prefabs",
 						"projectiles",
 						"splash_screen",
 						"title_screen",
@@ -613,21 +642,6 @@
 							"open": true,
 							"tint": "1,1,1,1"
 						},
-						"prefabs": {
-							"file_path": "res://scripts/prefabs",
-							"all": {
-
-							},
-							"files": [
-
-							],
-							"dirs": [
-
-							],
-							"show": true,
-							"open": true,
-							"tint": "1,1,1,1"
-						},
 						"projectiles": {
 							"file_path": "res://scripts/projectiles",
 							"all": {
@@ -683,7 +697,6 @@
 						"interface",
 						"mobs",
 						"player",
-						"prefabs",
 						"projectiles",
 						"splash_screen",
 						"title_screen"
@@ -701,6 +714,7 @@
 				"assets",
 				"autoload",
 				"dialogic",
+				"prefabs",
 				"scenes",
 				"scripts"
 			],

@@ -8,10 +8,8 @@ export(int, LAYERS_2D_PHYSICS) var collide_layer
 
 
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
-
 var melee_targets : Array
 var attacking : bool = false
-
 var current_weapon : String = "rifle"
 
 

@@ -7,10 +7,8 @@ export var damage : int = 5
 
 
 var velocity = Vector2()
-
 var enemy_hit : bool = false
 var origin
-
 var start_color : Color = Color(1,1,1,1)
 var end_color : Color = Color(1,1,1,0)
 
@@ -43,4 +41,3 @@ func _on_Area2D_body_entered(body) -> void:
 				enemy_hit = true
 				tween.interpolate_property(self, "modulate", start_color, end_color, 2, tween.TRANS_LINEAR, tween.EASE_IN_OUT)
 				tween.start()
-

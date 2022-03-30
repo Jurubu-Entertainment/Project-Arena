@@ -4,7 +4,6 @@ class_name Roleplay
 
 export var is_player := false
 export var health : int
-
 export var blood_splatter : PackedScene
 export var blood_color : Color
 export var blood_swell_size : float

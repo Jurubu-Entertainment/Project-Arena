@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/mobs/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/classes/Roleplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://prefabs/humanoid_skeleton/HumanoidSkeleton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=4]
 [ext_resource path="res://scenes/BloodSplatterDecal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/projectiles/Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/classes/Weapon.gd" type="Script" id=7]
+[ext_resource path="res://assets/graphics/player/rifle.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/player/muzzle_flash.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 34.0147
@@ -48,6 +52,13 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 5, 5 )
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+[sub_resource type="Animation" id=7]
+resource_name = "New Anim"
+length = 0.1
+loop = true
 
 [node name="EnemyBase" type="KinematicBody2D"]
 collision_layer = 2
@@ -136,6 +147,40 @@ script = ExtResource( 4 )
 stroke_color = Color( 0.61, 0.0427, 0.0427, 1 )
 stroke_width = 4.868
 stroke_sharp_limit = 0.0
+
+[node name="Weapon" type="Node2D" parent="."]
+position = Vector2( 103, 4 )
+script = ExtResource( 7 )
+projectile = ExtResource( 6 )
+
+[node name="MuzzleFlash" type="Sprite" parent="Weapon"]
+visible = false
+material = SubResource( 6 )
+position = Vector2( 125, 0 )
+texture = ExtResource( 9 )
+
+[node name="Gun" type="Sprite" parent="Weapon"]
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+"anims/New Anim" = SubResource( 7 )
+
+[node name="Muzzle" type="Node2D" parent="Weapon"]
+position = Vector2( 109, 0 )
+
+[node name="FireRate" type="Timer" parent="Weapon"]
+wait_time = 0.1
+
+[node name="Gun" type="Node2D" parent="."]
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Gun"]
+position = Vector2( 0, -1 )
+color = Color( 0.478431, 0.478431, 0.478431, 1 )
+polygon = PoolVector2Array( -2, -19, 65, -19, 65, 3, -2, 3 )
+
+[node name="Node2D" type="Node2D" parent="Gun"]
+position = Vector2( 9, 0 )
 
 [connection signal="body_entered" from="PlayerProximity" to="." method="_on_PlayerProximity_body_entered"]
 [connection signal="body_exited" from="PlayerProximity" to="." method="_on_PlayerProximity_body_exited"]

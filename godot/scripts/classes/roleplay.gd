@@ -19,20 +19,21 @@ func damage(damage) -> void:
 	if health > 0:
 		health -= damage
 	else:
-		if is_player:
-			$"../Skeleton".hide()
-			var node = blood_splatter.instance()
-			node.color = blood_color
-			node.size = blood_swell_size
-			$"../../../Decals".add_child(node)
-			node.global_position = self.global_position
-		else:
-			owner.queue_free()
-			var node = blood_splatter.instance()
-			node.color = blood_color
-			node.size = blood_swell_size
-			$"../../../Decals".add_child(node)
-			node.global_position = self.global_position
+		match is_player:
+			true:
+				$"../Skeleton".hide()
+				var node = blood_splatter.instance()
+				node.color = blood_color
+				node.size = blood_swell_size
+				$"../../../Decals".add_child(node)
+				node.global_position = self.global_position
+			false:
+				owner.queue_free()
+				var node = blood_splatter.instance()
+				node.color = blood_color
+				node.size = blood_swell_size
+				$"../../../Decals".add_child(node)
+				node.global_position = self.global_position
 
 
 func _death_anim_finished(anim_name) -> void:

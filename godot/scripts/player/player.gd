@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 
-export var speed : float
+export var run_speed : float = 300
+export var dodge_speed : float = 100
 
 
 var direction = null
@@ -13,15 +14,14 @@ var use_gamepad : bool = false
 var rs_look = Vector2(0,0)
 var deadzone = 0.3
 
-
 var _velocity : Vector2 = Vector2.ZERO
 
 
 onready var tween : Tween = $Tween
 onready var dodge_timer : Timer = $DodgeCooldown
 onready var trail : Particles2D = $Trail
-onready var gun : Node2D = $Gun
-onready var head : Bone2D = $HumanoidSkeleton/Head
+#onready var gun : Node2D = $Gun
+#onready var head : Bone2D = $HumanoidSkeleton/Head
 onready var attacks : Node2D = $AttacksHumanoid
 onready var roleplay : Area2D = $Roleplay
 
@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	if roleplay.health > 0:
-		look()
+		#look()
 		fighting()
 		var left = Input.get_action_strength("ui_left")
 		var right = Input.get_action_strength("ui_right")
@@ -48,7 +48,7 @@ func _physics_process(_delta) -> void:
 				can_dodge = false
 				dodging = true
 				origin = global_position
-				_velocity = move_and_slide(direction * speed * 120)
+				_velocity = move_and_slide(direction * run_speed * dodge_speed)
 				new_pos = global_position
 				global_position = origin
 				var _err = tween.interpolate_property(self, "global_position", origin,new_pos,0.15, tween.TRANS_LINEAR,tween.EASE_OUT_IN)
@@ -56,20 +56,25 @@ func _physics_process(_delta) -> void:
 				dodge_timer.start()
 		if not dodging:
 			direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-			_velocity = move_and_slide(direction * speed)
+			_velocity = move_and_slide(direction * run_speed)
 
 
 func look() -> void:
 	if not use_gamepad:
 		var mouse_pos = get_global_mouse_position()
 		look_at(mouse_pos)
-		head.look_at(mouse_pos)
+		#head.look_at(mouse_pos)
 	if use_gamepad:
-		rslook()
+		
+		rs_look.y = Input.get_joy_axis(0, JOY_AXIS_3)
+		rs_look.x = Input.get_joy_axis(0, JOY_AXIS_2)
+		if rs_look.length() >= deadzone:
+			rotation = rs_look.angle()
+		
 		var gamepad_gun_rotate_point : RayCast2D = $RayCast2D
 		var point = gamepad_gun_rotate_point.get_collision_point()
-		if not gamepad_gun_rotate_point.is_colliding():
-			gun.rotation_degrees = 0
+		#if not gamepad_gun_rotate_point.is_colliding():
+			#gun.rotation_degrees = 0
 
 
 func fighting() -> void:
@@ -77,13 +82,6 @@ func fighting() -> void:
 		attacks.melee()
 	if Input.is_action_pressed("shoot_primary"):
 		attacks.fire_primary()
-
-
-func rslook() -> void:
-	rs_look.y = Input.get_joy_axis(0, JOY_AXIS_3)
-	rs_look.x = Input.get_joy_axis(0, JOY_AXIS_2)
-	if rs_look.length() >= deadzone:
-		rotation = rs_look.angle()
 
 
 func _on_DodgeCooldown_timeout() -> void:
